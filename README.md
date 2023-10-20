@@ -29,10 +29,14 @@ I've made a layout (creatively named "Raidriar's Layout") you can use that shoul
 
 Either should work but from my testing Proton is more stable for now. Proton 8.0, Proton Experimental, and [Proton GE](<https://github.com/GloriousEggroll/proton-ge-custom>) have all been tested and all 3 work.
 
+By default Steam will download the native Linux build, in order to use the Windows version with Proton you will need to force it in Resonite's properties (`Properties < Compatibility`). From there you can choose any version of Proton you want.
+
+To install Proton GE, either download [ProtonUp-Qt](<https://github.com/DavidoTek/ProtonUp-Qt>) through discover in desktop mode, or use the [Wine Cellar](<https://github.com/FlashyReese/decky-wine-cellar>) [decky loader](<https://github.com/SteamDeckHomebrew/decky-loader>) plugin.
+
 ## Performance & Battery Life
 
 Unfortunately there's not much that can be done about this right now, but there are some options.
-**DISCLAIMER***, I modify my own Steam Deck with 3rd party tools and minimal hardware modifications to improve performance, my Steam Deck's performance is not indicative of a stock Steam Deck's performance.*
+**DISCLAIMER**, *I modify my own Steam Deck with 3rd party tools and minimal hardware modifications to improve performance, my Steam Deck's performance is not indicative of a stock Steam Deck's performance.*
 
 **Readily available options (quick access menu/in app options)**
 
