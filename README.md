@@ -6,28 +6,24 @@ This is a community maintained list of stuff you can do to improve using Resonit
 
 I've made a layout (creatively named "Raidriar's Layout") you can use that should cover the majority of controls you might commonly use, I have some buttons left over as I plan on expanding the layout but it should remain mostly similar to how it is now. There are more layouts the community has made but I will be going over mine here.
 
-*A* - Jump
-*B* - Crouch
-*X* - Secondary
-*Y* - Mute
-
-*L1* - 3rd Person
-*R1* - UI Focus Mode
-*L2* - Right Click
-*R2* - Left Click/Primary
-*L4* - Slow Walk/Slow Fly
-*R4* - Delete Held Item
-
-*Pause* - Dashboard
-*Select* - Context Menu
-
-*DPad Up* - Scale Up/Zoom In/Scroll Up
-*DPad Down* - Scale Down/Zoom Out/Scroll Down
-*DPad Left* - Hold to rotate held item with Right Joystick/Right Trackpad
-*DPad Right* - Hold to pan in UI Focus Mode with Right Joystick/RightTrackpad
-
-*Right Trackpad* - Finer mouse controls
-*Left Trackpad* - ToolTip Radial Menu
+- *A* - Jump
+- *B* - Crouch
+- *X* - Secondary
+- *Y* - Mute
+- *L1* - 3rd Person
+- *R1* - UI Focus Mode
+- *L2* - Right Click
+- *R2* - Left Click/Primary
+- *L4* - Slow Walk/Slow Fly
+- *R4* - Delete Held Item
+- *Pause* - Dashboard
+- *Select* - Context Menu
+- *DPad Up* - Scale Up/Zoom In/Scroll Up
+- *DPad Down* - Scale Down/Zoom Out/Scroll Down
+- *DPad Left* - Hold to rotate held item with Right Joystick/Right Trackpad
+- *DPad Right* - Hold to pan in UI Focus Mode with Right Joystick/RightTrackpad
+- *Right Trackpad* - Finer mouse controls
+- *Left Trackpad* - ToolTip Radial Menu
 
 ## Native or Proton
 
