@@ -56,11 +56,13 @@ Unfortunately there's not much that can be done about this right now, but there 
 
 **Resonite Mods (likely to not help much, only recommended for more extreme setups)**
 
-[Disable Dynamic Bones](<https://github.com/rassi0429/DisableDynamicBone>) - disables dynamic bones (very slight fps gain, not recommended)
+[DisableDynamicBones](<https://github.com/rassi0429/DisableDynamicBone>) - disables dynamic bone chains (very slight fps gain, not recommended)
 
-[Disable FXAA](<https://github.com/FalsePattern/DisableFXAA>) - disables FXAA anti aliasing (worsens upscaling quality)
+[DisableFXAA](<https://github.com/FalsePattern/DisableFXAA>) - disables FXAA anti aliasing (worsens upscaling quality)
 
-[IK Culling](<https://github.com/Raidriar796/ResoniteIkCulling>) - disables IK that's out of view and/or far away (in testing, thermals gain the most benefit but still very slight and likely within margain of error)
+[DynBoneWrangler](<https://github.com/isovel/DynBoneWrangler>) - disables dynamic bone chains when under a user specified fps limit and re-enables them when above another user specified fps limit. (less aggressive then DisableDynamicBone, might help stability at lower framerates)
+
+[ResoniteIkCulling](<https://github.com/Raidriar796/ResoniteIkCulling>) - disables IK that's out of view and/or far away. Includes IK throttling options (in testing, thermals gain the most benefit since IK is rarely the major bottleneck of a session)
 
 **3rd Party Tools (use at your own risk)**
 
