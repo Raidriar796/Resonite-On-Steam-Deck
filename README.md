@@ -4,12 +4,12 @@ This is a community maintained list of stuff you can do to improve using Resonit
 
 ## Table of Contents
 
-[Controls](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#controls>)
-[Headless Sessions](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#headless-sessions>)
-[Native or Proton](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#native-or-proton>)
-[Performance & Battery Life](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#performance--battery-life>)
-[Steam Deck & Steam Deck OLED differences](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#steam-deck--steam-deck-oled-differences>)
-[VR](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#vr>)
+- [Controls](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#controls>)
+- [Headless Sessions](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#headless-sessions>)
+- [Native or Proton](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#native-or-proton>)
+- [Performance & Battery Life](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#performance--battery-life>)
+- [Steam Deck & Steam Deck OLED differences](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#steam-deck--steam-deck-oled-differences>)
+- [VR](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#vr>)
 
 ## Controls
 
@@ -52,13 +52,13 @@ The Steam Deck uses an A/B partition structure, where SteamOS sits on one partit
 - Switch to desktop mode and open Konsole
 - Set up a password with the `passwd` command if you haven't already
 - Run the following commands:
-    `sudo steamos-readonly disable`
-    `sudo pacman-key --init`
-    `sudo pacman-key --populate`
-    `sudo pacman -Sy`
-    `sudo pacman -S mono`
-    *If installing Mono after a SteamOS update without rwfus, run the following command instead*
-    `sudo pacman -S --overwrite \* mono`
+    - `sudo steamos-readonly disable`
+    - `sudo pacman-key --init`
+    - `sudo pacman-key --populate`
+    - `sudo pacman -Sy`
+    - `sudo pacman -S mono`
+    - *If installing Mono after a SteamOS update without rwfus, run the following command instead*
+    - `sudo pacman -S --overwrite \* mono`
 - To make sure mono is installed, run `mono --version`. As of writing it should be version 6.12.0.
 
 2. Install the Headless client
@@ -76,7 +76,7 @@ The Steam Deck uses an A/B partition structure, where SteamOS sits on one partit
 - duplicate "DefaultConfig.json" and name the new file "Config.json"
 - Modify "Config.json" as needed, primarily account credentials, worlds to run, and permissions.
 
-Congradulations, you can now host Headless sessions on your Steam Deck. As stupid as it sounds, if you don't have another PC you can dedicate to a headless and don't want to/can't buy a server provider, this is a legitimately viable option for self hosting Headless sessions.
+Congradulations, you can now host Headless sessions on your Steam Deck. As stupid as it sounds, if you don't have another PC you can dedicate to a Headless and don't want to/can't pay for a server, this is a legitimately viable option for self hosting Headless sessions.
 
 ## Native or Proton
 
