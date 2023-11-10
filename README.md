@@ -2,6 +2,15 @@
  
 This is a community maintained list of stuff you can do to improve using Resonite on the Steam Deck. This list will change over time as needed, feel free to give suggestions or corrections.
 
+## Table of Contents
+
+[Controls](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#controls>)
+[Headless Sessions](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#headless-sessions>)
+[Native or Proton](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#native-or-proton>)
+[Performance & Battery Life](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#performance--battery-life>)
+[Steam Deck & Steam Deck OLED differences](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#steam-deck--steam-deck-oled-differences>)
+[VR](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#vr>)
+
 ## Controls
 
 I've made a layout (creatively named "Raidriar's Layout") you can use that should cover the majority of controls you might commonly use, I have some buttons left over as I plan on expanding the layout but it should remain mostly similar to how it is now. There are more layouts the community has made but I will be going over mine here.
@@ -25,6 +34,50 @@ I've made a layout (creatively named "Raidriar's Layout") you can use that shoul
 - *Right Trackpad* - Finer mouse controls
 - *Left Trackpad* - ToolTip Radial Menu
 
+## Headless Sessions
+
+Yes, it is possible to run Headless sessions without containers or virtual machines on a Steam Deck. Yes, it performs well, incredibly well actually.
+
+**Some really important info to get out of the way first**
+
+This is gonna be the most advanced section in this guide so I'd only recommend this if you're comfortable with terminals.
+
+The Headless client is not provided with Resonite, it is required that you pay for the appropriate Patreon tier in order to gain access to the software. This guide assumes you have access to the client already if you're continuing through this section.
+
+The Steam Deck uses an A/B partition structure, where SteamOS sits on one partition that is mostly reset whenever SteamOS updates, and the other partition is where all user data is stored and is not touched by updates. With this in mind, everything we're about to install with the terminal *will* be deleted whenever SteamOS updates. The setup process requires a slight difference in installation after an update, but there is an alternative to installing what's needed everytime. The tool [rwfus](<https://github.com/ValShaped/rwfus>) allows you to download packages through the terminal and have them persist through SteamOS updates, **use this at your own risk.**
+
+**Installation & Setup**
+
+1. Install Mono
+- Switch to desktop mode and open Konsole
+- Set up a password with the `passwd` command if you haven't already
+- Run the following commands:
+    `sudo steamos-readonly disable`
+    `sudo pacman-key --init`
+    `sudo pacman-key --populate`
+    `sudo pacman -Sy`
+    `sudo pacman -S mono`
+    *If installing Mono after a SteamOS update without rwfus, run the following command instead*
+    `sudo pacman -S --overwrite \* mono`
+- To make sure mono is installed, run `mono --version`. As of writing it should be version 6.12.0.
+
+2. Install the Headless client
+- Open your steam library and go to Resonite
+- Go into Properties and into the Betas tab
+- Enter the beta code for the Headless client if not done already
+- Change from "None" to "headless - Builds including headless server" and wait for Steam to update Resonite. *Note: disable force using Proton if you aren't already using the native Linux build.*
+- Open Konsole and run the following commands:
+    `cd ~/.steam/steam/steamapps/common/Resonite/Headless`
+    `mono Resonite.exe`
+- The Headless client should startup, you can shut it down whenever, this is just to make sure it's working and to generate any needed files.
+
+3. Configure the Headless client
+- Go to the directory `/home/deck/.local/share/Steam/steamapps/common/Resonite/Headless/Config/` in Dolphin or Konsole
+- duplicate "DefaultConfig.json" and name the new file "Config.json"
+- Modify "Config.json" as needed, primarily account credentials, worlds to run, and permissions.
+
+Congradulations, you can now host Headless sessions on your Steam Deck. As stupid as it sounds, if you don't have another PC you can dedicate to a headless and don't want to/can't buy a server provider, this is a legitimately viable option for self hosting Headless sessions.
+
 ## Native or Proton
 
 Either should work but from my testing Proton is more stable for now. Proton 8.0, Proton Experimental, and [Proton GE](<https://github.com/GloriousEggroll/proton-ge-custom>) have all been tested and all 3 work.
@@ -46,7 +99,7 @@ Unfortunately there's not much that can be done about this right now, but there 
 
 *Half Rate Shading (QAM)* - slightly reduces text readability and improves battery life, somewhat recommended
 
-*TDP Limit (QAM)* - not tested enough, tweak as needed
+*TDP Limit (QAM)* - From testing, Resonite seems to rarely use more then 10 watts, from my understanding due to the inability to run fast enough to draw more than 10 watts. Your milage may vary, tweak as needed.
 
 *Fixed GPU Clock (QAM)* - not tested enough, tweak as needed
 
@@ -71,3 +124,20 @@ Unfortunately there's not much that can be done about this right now, but there 
 [Refresh Rate Unlocker](<https://github.com/ryanrudolfoba/SteamDeck-RefreshRateUnlocker>) - allows you to change the display refresh rate to go as low as 30 hz or as high as 70 hz. **Be aware that overclocking the display may damage the display, replacing Steam Deck screens aren't cheap. you can install this without the overclocking option.**
 
 [Powertools](<https://git.ngni.us/NG-SD-Plugins/PowerTools>) - [decky loader](<https://github.com/SteamDeckHomebrew/decky-loader>) plugin that exposes more options to tweak performance, for most users I'd only recommend this for the CPU governor options (the powersave option can extend the battery life quite a bit)
+
+## Steam Deck & Steam Deck OLED differences
+
+The refreshed model of the Steam Deck has a good handful of differences that make the device better overall. Despite this, you shouldn't expect better performance with the refreshed model. Here's what you can expect with the Steam Deck OLED.
+*DISCLAIMER: As of writing the Steam Deck OLED is not released, these are guesses based on what we know already and this may change as we get real world tests done. This takes into account how Resonite performs on non Steam Deck devices with different hardware configurations.*
+
+- Longer battery life - the more efficient APU as well as the larger battery will allow for longer usage
+- Faster RAM - the refreshed model contains RAM speeds of 6400 MT/s, compared to the original model's 5500 MT/s, that's a pretty huge jump, but not world changing. This will likely allow for faster asset loading in Resonite.
+- More stable connection - the new Wi-Fi 6E capabilities of the refreshed model will offer better connection reliability to sessions and faster asset downloading, provided you aren't limited by your internet.
+
+That's it. There's a lot of nice changes with the refreshed model but nothing game changing for Resonite, but it shouldn't perform any worse.
+
+## VR
+
+**No.**
+
+While it is possible to run VR on a Steam Deck, people have run Resonite in VR on a Steam Deck, but the experience is pretty awful in anything that's not an incredibly light session, it also puts a lot of strain on the Steam Deck. I cannot recommend trying it for any serious reason.
