@@ -8,6 +8,7 @@ This is a community maintained list of stuff you can do to improve using Resonit
 - [Headless Sessions](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#headless-sessions>)
 - [Native or Proton](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#native-or-proton>)
 - [Performance & Battery Life](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#performance--battery-life>)
+- [Screenshot management with Proton](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#screenshot-management-with-proton>)
 - [Steam Deck & Steam Deck OLED differences](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#steam-deck--steam-deck-oled-differences>)
 - [VR](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#vr>)
 
@@ -25,6 +26,8 @@ I've made a layout (creatively named "Raidriar's Layout") you can use that shoul
 - *R2* - Left Click/Primary
 - *L4* - Slow Walk/Slow Fly
 - *R4* - Delete Held Item
+- *L5* - Instant Photo
+- *R5* - Timed Photo
 - *Pause* - Dashboard
 - *Select* - Context Menu
 - *DPad Up* - Scale Up/Zoom In/Scroll Up
@@ -80,7 +83,7 @@ Congradulations, you can now host Headless sessions on your Steam Deck. As stupi
 
 ## Native or Proton
 
-Either should work but from my testing Proton is more stable for now. Proton 8.0, Proton Experimental, and [Proton GE](<https://github.com/GloriousEggroll/proton-ge-custom>) have all been tested and all 3 work.
+Native is currently not recommended, as it requires manual fixing in a lot of cases. You'll likely want to use Proton. Proton 8.0, Proton Experimental, and [Proton GE 8](<https://github.com/GloriousEggroll/proton-ge-custom>) have all been tested and all 3 work.
 
 By default Steam will download the native Linux build, in order to use the Windows version with Proton you will need to force it in Resonite's properties (`Properties < Compatibility`). From there you can choose any version of Proton you want.
 
@@ -93,11 +96,13 @@ Unfortunately there's not much that can be done about this right now, but there 
 
 **Readily available options (quick access menu/in app options)**
 
-*Framerate Limit (QAM)* - somewhat helpful but introduces a lot of input latency, not recommended
+*Framerate Limit (QAM)* - Change at your discretion, in active sessions it's rare to have more then 30 fps currently so it's safe to limit it to 30 fps, though it will still run at 60 hz (90 hz on OLED). You can do 40 fps/hz to conserve power.
 
-*Refresh Rate (QAM)* - somewhat helpful, introduces input latency but is more effective at preserving battery life, somewhat recommended
+*Disable Frame Limit (QAM)* - Disables Framerate Limit and falls back to 60 fps/hz, not recommended
 
-*Half Rate Shading (QAM)* - slightly reduces text readability and improves battery life, somewhat recommended
+*Allow Tearing (QAM)* - No effect, Resonite forces vsync
+
+*Half Rate Shading (QAM)* - slightly reduces text readability (excluding the dashboard) and improves battery life, somewhat recommended
 
 *TDP Limit (QAM)* - From testing, Resonite seems to rarely use more then 10 watts, from my understanding due to the inability to run fast enough to draw more than 10 watts. Your milage may vary, tweak as needed.
 
@@ -105,7 +110,7 @@ Unfortunately there's not much that can be done about this right now, but there 
 
 *Upscaling (QAM)* - you will need to force the game resolution in Steam (`Properties < General < Game resolution`). I recommend 1024x640 as that maintains text readability fairly well. you can go down to 800x500 and still have a decent experience but don't expect to read text very well. You'll also need to back out and go back into properties to enable the `Set resolution for internal and external display` option, from my experience that's needed in order for Resonite to respect this setting. *Do keep in mind that upscaling is trading GPU cost for CPU cost, and while that's usually a net gain, Resonite is currently CPU bound so the potential gain may not be worth it.*
 
-*Noise Supression Filter (in app option)* - disabling this will reduce CPU load slightly but **please** use something other than the internal microphone if you do disable this
+*Noise Supression Filter (in app option)* - disabling this will reduce CPU load slightly but **please** use something other than the internal microphone if you do disable this, not recommended
 
 **Resonite Mods (likely to not help much, only recommended for more extreme setups)**
 
@@ -117,15 +122,27 @@ Unfortunately there's not much that can be done about this right now, but there 
 
 [DynBoneWrangler](<https://github.com/isovel/DynBoneWrangler>) - disables dynamic bone chains when under a user specified fps limit and re-enables them when above another user specified fps limit. (less aggressive then DisableDynamicBone, might help stability at lower framerates)
 
+[NoSteamScreenshots](<https://github.com/Raidriar796/NoSteamScreenshots>) - prevents Steam from saving an additional copy of photos you save in game.
+
 [ResoniteIkCulling](<https://github.com/Raidriar796/ResoniteIkCulling>) - disables IK that's out of view and/or far away. Includes IK throttling options. (in testing, thermals gain the most benefit since IK is rarely the major bottleneck of a session)
 
 **3rd Party Tools (use at your own risk)**
 
 [Cryo Utilities](<https://github.com/CryoByte33/steam-deck-utilities>) - RAM, VRAM, Swap, and storage optimizations. You'll likely need this to be able to reliable join moderately sized worlds without running out of RAM and crashing.
 
-[Refresh Rate Unlocker](<https://github.com/ryanrudolfoba/SteamDeck-RefreshRateUnlocker>) - allows you to change the display refresh rate to go as low as 30 hz or as high as 70 hz. **Be aware that overclocking the display may damage the display, replacing Steam Deck screens aren't cheap. you can install this without the overclocking option.**
-
 [Powertools](<https://git.ngni.us/NG-SD-Plugins/PowerTools>) - [decky loader](<https://github.com/SteamDeckHomebrew/decky-loader>) plugin that exposes more options to tweak performance, for most users I'd only recommend this for the CPU governor options (the powersave option can extend the battery life quite a bit)
+
+## Screenshot management with Proton
+
+When using Proton, steam will create a lot of extra folders that mimic the folder structure of Windows to allow for compatibility when games try to reference Windows specific directories. This is important because Resonite has an in game screenshot function which saves to `C:\Users\[YourUser]\Pictures\Resonite` by default. This causes Resonite to save screenshots to a really annoying location, this can be made easier though. To do so:
+
+1. Go to `/home/deck/.steam/steam/steamapps/compatdata/2519830/pfx/drive_c/users/steamuser/pictures/`
+
+2. Left trigger (right click) and do `Create New > Link to File or Directory...`
+
+3. Set the name to "Resonite" and the directory to `/home/deck/Pictures/Resonite` (or anywhere else you may want to save screenshots to)
+
+Now whenever Resonite saves a photo, it tries to save to `C:\Users\[YourUser]\Pictures\Resonite` but instead saves it to `/home/deck/Pictures/Resonite` or another directory of your choosing.
 
 ## Steam Deck & Steam Deck OLED differences
 
