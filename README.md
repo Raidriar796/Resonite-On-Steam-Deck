@@ -15,6 +15,7 @@ This is a community maintained list of stuff you can do to improve using Resonit
 
 **Advanced**
 - [Headless Sessions](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#headless-sessions>)
+- [Mods](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#mods>)
 - [VR](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#vr>)
 
 # Getting Started
@@ -74,20 +75,6 @@ Unfortunately there's not much that can be done about this right now, but there 
 *Upscaling (QAM)* - you will need to force the game resolution in Steam (`Properties < General < Game resolution`). I recommend 1024x640 as that maintains text readability fairly well. you can go down to 800x500 and still have a decent experience but don't expect to read text very well. You'll also need to back out and go back into properties to enable the `Set resolution for internal and external display` option, from my experience that's needed in order for Resonite to respect this setting. *Do keep in mind that upscaling is trading GPU cost for CPU cost, and while that's usually a net gain, Resonite is currently CPU bound so the potential gain may not be worth it.*
 
 *Noise Supression Filter (in app option)* - disabling this will reduce CPU load slightly but **please** use something other than the internal microphone if you do disable this, not recommended
-
-**Resonite Mods (likely to not help much, only recommended for more extreme setups)**
-
-[CacheGetClapped](<https://github.com/dfgHiatus/CacheGetClapped>) - Smart cache management, clears old cache files and can keep cache size within specified limit. (highly recommended)
-
-[DisableFXAA](<https://github.com/FalsePattern/DisableFXAA>) - Disables FXAA anti aliasing. (worsens upscaling quality)
-
-[DynBoneWrangler](<https://github.com/isovel/DynBoneWrangler>) - Disables dynamic bone chains when under a user specified fps limit and re-enables them when above another user specified fps limit. (less aggressive then DisableDynamicBone, might help stability at lower framerates)
-
-[NoSteamScreenshots](<https://github.com/Raidriar796/NoSteamScreenshots>) - Prevents Steam from saving an additional copy of photos you save in game, this also stops hitches from saving photos
-
-[ResoniteIkCulling](<https://github.com/Raidriar796/ResoniteIkCulling>) - Disables IK that's out of view and/or far away. Includes IK throttling options. (In testing, thermals gain the most benefit since IK is rarely the major bottleneck of a session)
-
-[ShadowDistanceChanger](<https://github.com/art0007i/ShadowDistanceChanger>) - Allows for the max range of shadow visibility to be configured (In testing, performance doesn't change when shadows are decreased, but it does reduce power consumption from the GPU)
 
 **3rd Party Tools (use at your own risk)**
 
@@ -165,6 +152,70 @@ The Steam Deck uses an A/B partition structure, where SteamOS sits on one partit
 - Modify "Config.json" as needed, primarily account credentials, worlds to run, and permissions.
 
 Congradulations, you can now host Headless sessions on your Steam Deck. As stupid as it sounds, if you don't have another PC you can dedicate to a Headless and don't want to/can't pay for a server, this is a legitimately viable option for self hosting Headless sessions.
+
+## Mods
+
+Resonite modding currently isn't big or game changing. The scope of what can be modded is fairly limited and the vast capabilities of Resonite remove a lot of the need for modding, despite this, a modding scene exists. It primarily consists of quality of life fixes or slight feature additions or improvements.
+
+If you prefer an experience slightly above tolerable then this is the way to go. You'll need to go to Desktop Mode for this.
+
+There are a couple of mod loaders but the primary one is currently [ResoniteModLoader](<https://github.com/resonite-modding-group/ResoniteModLoader>). I won't give a full guide on setting up mods as RML already has a guide which is applicable to the Steam Deck.
+
+**Recommended Mods**
+
+*The .dll files will need to be manually placed in the `rml_mods` folder*
+
+[CacheGetClapped](<https://github.com/dfgHiatus/CacheGetClapped>) - Smart cache management, clears old cache files and can keep cache size within specified limit. 
+
+*Highly Recommended, especially for 64/256 GB models.*
+
+[DisableFXAA](<https://github.com/FalsePattern/DisableFXAA>) - Disables FXAA anti aliasing.
+
+*Worsens upscale quality and causes jagged edges to be more jarring, but text readability is vastly improved*
+
+[DynBoneWrangler](<https://github.com/isovel/DynBoneWrangler>) - Disables dynamic bone chains when under a user specified fps limit and re-enables them when above another user specified fps limit.
+
+*Prevents shakey dynamic bones at frequently low framerates, may improve frame stability.*
+
+[NoSteamScreenshots](<https://github.com/Raidriar796/NoSteamScreenshots>) - Prevents Steam from saving an additional copy of photos you save in game, this also stops hitches from saving photos
+
+*Highly recommended if you're primarily using in app cameras*
+
+[ResoniteIkCulling](<https://github.com/Raidriar796/ResoniteIkCulling>) - Disables IK that's out of view and/or far away. Includes IK throttling options.
+
+*Primarily helps thermals and battery life in testing, highly recommended*
+
+[ShadowDistanceChanger](<https://github.com/art0007i/ShadowDistanceChanger>) - Allows for the max range of shadow visibility to be configured.
+
+*Slight reduction of GPU power consumption when reduced at the cost of shadow quality, slightly recommended*
+
+**Mod manager**
+
+There is an in-development mod manager that can actually be used on the Steam Deck right now, but I can't entirely recommend it as the [manifest](<https://github.com/resonite-modding-group/resonite-mod-manifest>) lacks contributors currently and the mods you can download from it are limited. The manager can *mostly* setup the mod loader for you at the very least.
+
+The mod manager, [Resolute](<https://github.com/Gawdl3y/Resolute>), can be downloaded and setup to run without the need to go to Desktop Mode, but for now it requires some configuration to get working.
+
+**Setting up the mod manager**
+
+1. From the [releases page](<https://github.com/Gawdl3y/Resolute/releases>), download the `.AppImage`
+
+2. Open the application
+
+3. enter the install location to Resonite (by default: `/home/deck/.local/share/Steam/steamapps/common/Resonite`)
+
+Resolute is now setup to run and install the mod loader and mods, but more can be done to increase ease of access.
+
+**Setting up the mod manager in Steam**
+
+1. Move the app to a folder such as `/Home/deck/Applications` or wherever you'd like to store it
+
+2. rename it, I'd suggest just naming it "resolute.AppImage"
+
+3. Right click (left trigger) the file and click `Add to Steam`
+
+It will now work in Game Mode. From here if you want to update Resolute you'll want to revisit the releases page and download the latest AppImage, replace the previous AppImage with the new file, and rename it to "resolute.AppImage" so nothing needs to be reconfigured in Steam. (until some kind of auto updating can occur)
+
+Beyond this I recommend changing the QAM Scaling Mode to Stretch to fill the screen, but it's not required.
 
 ## VR
 
