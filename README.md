@@ -203,7 +203,7 @@ The mod manager, [Resolute](<https://github.com/Gawdl3y/Resolute>), can be downl
 
 3. enter the install location to Resonite (by default: `/home/deck/.local/share/Steam/steamapps/common/Resonite`)
 
-Resolute is now setup to run and install the mod loader and mods, but more can be done to increase ease of access.
+Resolute is now setup to run and install the mod loader and mods, but more can be done to increase ease of access. It can also update itself when new releases come out.
 
 **Setting up the mod manager in Steam**
 
@@ -213,7 +213,7 @@ Resolute is now setup to run and install the mod loader and mods, but more can b
 
 3. Right click (left trigger) the file and click `Add to Steam`
 
-It will now work in Game Mode. From here if you want to update Resolute you'll want to revisit the releases page and download the latest AppImage, replace the previous AppImage with the new file, and rename it to "resolute.AppImage" so nothing needs to be reconfigured in Steam. (until some kind of auto updating can occur)
+It will now work in Game Mode. If you need to manually update it, you'll want to revisit the releases page and download the latest AppImage, replace the previous AppImage with the new file, and rename it to "resolute.AppImage" so nothing needs to be reconfigured in Steam.
 
 Beyond this I recommend changing the QAM Scaling Mode to Stretch to fill the screen, but it's not required.
 
