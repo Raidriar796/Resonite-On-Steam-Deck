@@ -16,6 +16,7 @@ This is a community maintained list of stuff you can do to improve using Resonit
 **Advanced**
 - [Headless Sessions](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#headless-sessions>)
 - [Mods](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#mods>)
+- [ReShade](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#ReShade>)
 - [VR](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#vr>)
 
 # Getting Started
@@ -216,6 +217,32 @@ Resolute is now setup to run and install the mod loader and mods, but more can b
 It will now work in Game Mode. If you need to manually update it, you'll want to revisit the releases page and download the latest AppImage, replace the previous AppImage with the new file, and rename it to "resolute.AppImage" so nothing needs to be reconfigured in Steam.
 
 Beyond this I recommend changing the QAM Scaling Mode to Stretch to fill the screen, but it's not required.
+
+## ReShade
+
+It is possible to install ReShade on a Steam Deck, not only that but it does work with Resonite.
+
+Now why would you want to do this? Currently the only options we have for antialiasing are FXAA and CTAA (with the launch argument `-ctaa`). Both aren't exactly great and some users, *myself included,* disable FXAA with a mod. Despite the increased jagged edges, it  helps readability and clarity.
+
+This can be extended by supplying SMAA through ReShade for even better visuals. Of course, with ReShade installed you can use a plethora of other shaders, but the goal here is to at least get SMAA working. (I do not recommend this if you're not disabling FXAA, the visuals just get muddier)
+
+***Discliamer: This is assuming you're using Proton, this part of the guide will be updated when the native build is in a more functional state***
+
+Installation:
+
+1. Go to [reshade-steam-proton](<https://github.com/kevinlekiller/ReShade-steam-proton>) and follow the instructions to download and run the script
+
+2. Follow instructions and answer the prompts with 2 specific differences:
+- When prompted if you want the script to detect the right dll files, say no with `n`
+- When prompted to enter the dll override, enter `dxgi`
+
+3. Go back into Game Mode and launch Resonite.
+
+4. Press the Home key to open the ReShade window and enable SMAA.fx
+
+The Steam virtual keyboard does not have the Home key, if you do not have an external keyboard, you can edit the ReShade.ini file in the Resonite folder and change the keybind referencing [this list](<https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.keys?view=windowsdesktop-6.0>)
+
+Now you can have SMAA in Resonite alongside whatever other shaders you may want to use, keep in mind heavy shaders come with heavy performance drops.
 
 ## VR
 
