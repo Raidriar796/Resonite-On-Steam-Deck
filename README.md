@@ -77,6 +77,12 @@ Unfortunately there's not much that can be done about this right now, but there 
 
 *Noise Supression Filter (in app option)* - disabling this will reduce CPU load slightly but **please** use something other than the internal microphone if you do disable this, not recommended
 
+**Launch Options (`Properties < General < Launch Options`)**
+
+`-donotautoloadhome` - Disables the cloud home from booting on startup, making startup quicker.
+
+`taskset -c 0,2,4,6 %command%` - "Disables" SMT for Resonite specifically, primarily beneficial on desktop mode or with multiple applications running. (if `%command%` is already there, only add `taskset -c 0,2,4,6`)
+
 **3rd Party Tools (use at your own risk)**
 
 [Cryo Utilities](<https://github.com/CryoByte33/steam-deck-utilities>) - RAM, VRAM, Swap, and storage optimizations. You'll likely need this to be able to reliable join moderately sized worlds without running out of RAM and crashing.
@@ -222,9 +228,9 @@ Beyond this I recommend changing the QAM Scaling Mode to Stretch to fill the scr
 
 It is possible to install ReShade on a Steam Deck, not only that but it does work with Resonite.
 
-Now why would you want to do this? Currently the only options we have for antialiasing are FXAA and CTAA (with the launch argument `-ctaa`). Both aren't exactly great and some users, *myself included,* disable FXAA with a mod. Despite the increased jagged edges, it  helps readability and clarity.
+Now why would you want to do this? Currently the only options we have for antialiasing are FXAA and CTAA (with the launch argument `-ctaa`). Both aren't exactly great and some users, *myself included,* disable FXAA with a mod. Despite the increased jagged edges, it helps readability and clarity.
 
-This can be extended by supplying SMAA through ReShade for even better visuals. Of course, with ReShade installed you can use a plethora of other shaders, but the goal here is to at least get SMAA working. (I do not recommend this if you're not disabling FXAA, the visuals just get muddier)
+This can be extended by supplying SMAA and Contrast Adaptive Sharpening (CAS) through ReShade for even better visuals. Of course, with ReShade installed you can use a plethora of other shaders, but the goal here is to at least get SMAA and CAS working. (I do not recommend this if you're not disabling FXAA, the visuals just get muddier)
 
 ***Discliamer: This is assuming you're using Proton, this part of the guide will be updated when the native build is in a more functional state***
 
@@ -236,13 +242,13 @@ Installation:
 - When prompted if you want the script to detect the right dll files, say no with `n`
 - When prompted to enter the dll override, enter `dxgi`
 
-3. Go back into Game Mode and launch Resonite.
+3. Launch Resonite in either Desktop or Game Mode
 
-4. Press the Home key to open the ReShade window and enable SMAA.fx
+4. Press the Home key to open the ReShade window and enable SMAA.fx and CAS.fx
 
 The Steam virtual keyboard does not have the Home key, if you do not have an external keyboard, you can edit the ReShade.ini file in the Resonite folder and change the keybind referencing [this list](<https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.keys?view=windowsdesktop-6.0>)
 
-Now you can have SMAA in Resonite alongside whatever other shaders you may want to use, keep in mind heavy shaders come with heavy performance drops.
+Now you can have SMAA and/or CAS in Resonite alongside whatever other shaders you may want to use, keep in mind heavy shaders come with heavy performance drops.
 
 ## VR
 
