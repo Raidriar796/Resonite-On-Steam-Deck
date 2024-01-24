@@ -75,8 +75,6 @@ Unfortunately there's not much that can be done about this right now, but there 
 
 *Upscaling (QAM)* - you will need to force the game resolution in Steam (`Properties < General < Game resolution`). I recommend 1024x640 as that maintains text readability fairly well. you can go down to 800x500 and still have a decent experience but don't expect to read text very well. You'll also need to back out and go back into properties to enable the `Set resolution for internal and external display` option, from my experience that's needed in order for Resonite to respect this setting. *Do keep in mind that upscaling is trading GPU cost for CPU cost, and while that's usually a net gain, Resonite is currently CPU bound so the potential gain may not be worth it.*
 
-*Noise Supression Filter (in app option)* - disabling this will reduce CPU load slightly but **please** use something other than the internal microphone if you do disable this, not recommended
-
 **Launch Options (`Properties < General < Launch Options`)**
 
 `-donotautoloadhome` - Disables the cloud home from booting on startup, making startup quicker.
@@ -208,7 +206,7 @@ The mod manager, [Resolute](<https://github.com/Gawdl3y/Resolute>), can be downl
 
 2. Open the application
 
-3. enter the install location to Resonite (by default: `/home/deck/.local/share/Steam/steamapps/common/Resonite`)
+3. enter the install location to Resonite if it's not auto detected correctly (by default: `/home/deck/.local/share/Steam/steamapps/common/Resonite`)
 
 Resolute is now setup to run and install the mod loader and mods, but more can be done to increase ease of access. It can also update itself when new releases come out.
 
@@ -249,6 +247,10 @@ Installation:
 The Steam virtual keyboard does not have the Home key, if you do not have an external keyboard, you can edit the ReShade.ini file in the Resonite folder and change the keybind referencing [this list](<https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.keys?view=windowsdesktop-6.0>)
 
 Now you can have SMAA and/or CAS in Resonite alongside whatever other shaders you may want to use, keep in mind heavy shaders come with heavy performance drops.
+
+Alternative method:
+
+If you'd like SMAA/CAS in a more broad sense, you can install [vkbasalt](<https://github.com/simons-public/steam-deck-vkbasalt-install>) to easily get SMAA/CAS system wide for anything running with vulkan (which applies to Resonite when using Proton). Downsides include no UI, disabling has to be done on a per game basis, and it supports reshade shaders and not every shader will work with vkbasalt.
 
 ## VR
 
