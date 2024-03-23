@@ -16,7 +16,7 @@ This is a community maintained list of stuff you can do to improve using Resonit
 **Advanced**
 - [Headless Sessions](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#headless-sessions>)
 - [Mods](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#mods>)
-- [ReShade](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#ReShade>)
+- [ReShade & vkbasalt](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#ReShade--vkbasalt>)
 - [VR](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#vr>)
 
 # Getting Started
@@ -48,7 +48,14 @@ I've made a layout (creatively named "Raidriar's Layout") you can use that shoul
 
 ## Native or Proton
 
-Native is currently not recommended, as it requires manual fixing in a lot of cases. You'll likely want to use Proton. Proton 8.0, Proton Experimental, and [Proton GE 8](<https://github.com/GloriousEggroll/proton-ge-custom>) have all been tested and all 3 work.
+Native is currently not recommended, as it requires manual fixing. You'll likely want to use Proton.
+
+All tested & working Proton versions:
+- Proton 8
+- Proton 9
+- Proton Experimental
+- [Proton GE 8](<https://github.com/GloriousEggroll/proton-ge-custom>)
+- [Proton GE 9](<https://github.com/GloriousEggroll/proton-ge-custom>)
 
 By default Steam will download the native Linux build, in order to use the Windows version with Proton you will need to force it in Resonite's properties (`Properties < Compatibility`). From there you can choose any version of Proton you want.
 
@@ -104,10 +111,9 @@ Now whenever Resonite saves a photo, it tries to save to `C:\Users\[YourUser]\Pi
 ## Steam Deck & Steam Deck OLED differences
 
 The refreshed model of the Steam Deck has a good handful of differences that make the device better overall. Despite this, you shouldn't expect better performance with the refreshed model. Here's what you can expect with the Steam Deck OLED.
-*DISCLAIMER: As of writing the Steam Deck OLED is not released, these are guesses based on what we know already and this may change as we get real world tests done. This takes into account how Resonite performs on non Steam Deck devices with different hardware configurations.*
 
 - Longer battery life - the more efficient APU as well as the larger battery will allow for longer usage
-- Faster RAM - the refreshed model contains RAM speeds of 6400 MT/s, compared to the original model's 5500 MT/s, that's a pretty huge jump, but not world changing. This will likely allow for faster asset loading in Resonite.
+- Faster RAM - the refreshed model contains RAM speeds of 6400 MT/s, compared to the original model's 5500 MT/s, that's a pretty huge jump, but not world changing. This will allow for faster asset loading in Resonite.
 - More stable connection - the new Wi-Fi 6E capabilities of the refreshed model will offer better connection reliability to sessions and faster asset downloading, provided you aren't limited by your internet.
 
 That's it. There's a lot of nice changes with the refreshed model but nothing game changing for Resonite, but it shouldn't perform any worse.
@@ -121,6 +127,8 @@ Yes, it is possible to run Headless sessions without containers or virtual machi
 **Some really important info to get out of the way first**
 
 This is gonna be the most advanced section in this guide so I'd only recommend this if you're comfortable with terminals.
+
+This guide will go over installing and running the headless client completely natively, if you want to run a virtual machine instead (giving you a more traditional headless client experience) then install Gnome Boxes from discover and follow a normal setup guide.
 
 The Headless client is not provided with Resonite, it is required that you pay for the appropriate Patreon tier in order to gain access to the software. This guide assumes you have access to the client already if you're continuing through this section.
 
@@ -137,7 +145,7 @@ The Steam Deck uses an A/B partition structure, where SteamOS sits on one partit
     - `sudo pacman-key --populate`
     - `sudo pacman -Sy`
     - `sudo pacman -S mono`
-    - *If installing Mono after a SteamOS update without rwfus, run the following command instead*
+- *If installing Mono after a SteamOS update without rwfus, run the following command instead of the last command*
     - `sudo pacman -S --overwrite \* mono`
 - To make sure mono is installed, run `mono --version`. As of writing it should be version 6.12.0.
 
@@ -147,8 +155,8 @@ The Steam Deck uses an A/B partition structure, where SteamOS sits on one partit
 - Enter the beta code for the Headless client if not done already
 - Change from "None" to "headless - Builds including headless server" and wait for Steam to update Resonite. *Note: disable force using Proton if you aren't already using the native Linux build.*
 - Open Konsole and run the following commands:
-    `cd ~/.steam/steam/steamapps/common/Resonite/Headless`
-    `mono Resonite.exe`
+    - `cd ~/.steam/steam/steamapps/common/Resonite/Headless`
+    - `mono Resonite.exe`
 - The Headless client should startup, you can shut it down whenever, this is just to make sure it's working and to generate any needed files.
 
 3. Configure the Headless client
@@ -166,39 +174,11 @@ If you prefer an experience slightly above tolerable then this is the way to go.
 
 There are a couple of mod loaders but the primary one is currently [ResoniteModLoader](<https://github.com/resonite-modding-group/ResoniteModLoader>). I won't give a full guide on setting up mods as RML already has a guide which is applicable to the Steam Deck.
 
-**Recommended Mods**
-
-*The .dll files will need to be manually placed in the `rml_mods` folder*
-
-[CacheGetClapped](<https://github.com/dfgHiatus/CacheGetClapped>) - Smart cache management, clears old cache files and can keep cache size within specified limit. 
-
-*Highly Recommended, especially for 64/256 GB models.*
-
-[DisableFXAA](<https://github.com/FalsePattern/DisableFXAA>) - Disables FXAA anti aliasing.
-
-*Worsens upscale quality and causes jagged edges to be more jarring, but text readability is vastly improved*
-
-[DynBoneWrangler](<https://github.com/isovel/DynBoneWrangler>) - Disables dynamic bone chains when under a user specified fps limit and re-enables them when above another user specified fps limit.
-
-*Prevents shakey dynamic bones at frequently low framerates, may improve frame stability.*
-
-[NoSteamScreenshots](<https://github.com/Raidriar796/NoSteamScreenshots>) - Prevents Steam from saving an additional copy of photos you save in game, this also stops hitches from saving photos
-
-*Highly recommended if you're primarily using in app cameras*
-
-[ResoniteIkCulling](<https://github.com/Raidriar796/ResoniteIkCulling>) - Disables IK that's out of view and/or far away. Includes IK throttling options.
-
-*Primarily helps thermals and battery life in testing, highly recommended*
-
-[ShadowDistanceChanger](<https://github.com/art0007i/ShadowDistanceChanger>) - Allows for the max range of shadow visibility to be configured.
-
-*Slight reduction of GPU power consumption when reduced at the cost of shadow quality, slightly recommended*
-
 **Mod manager**
 
-There is an in-development mod manager that can actually be used on the Steam Deck right now, but I can't entirely recommend it as the [manifest](<https://github.com/resonite-modding-group/resonite-mod-manifest>) lacks contributors currently and the mods you can download from it are limited. The manager can *mostly* setup the mod loader for you at the very least.
+There is an in-development mod manager that can actually be used on the Steam Deck right now.
 
-The mod manager, [Resolute](<https://github.com/Gawdl3y/Resolute>), can be downloaded and setup to run without the need to go to Desktop Mode, but for now it requires some configuration to get working.
+The mod manager, [Resolute](<https://github.com/Gawdl3y/Resolute>), can be downloaded and setup to run without the need to go to Desktop Mode, but for now it requires slight configuration to get working.
 
 **Setting up the mod manager**
 
@@ -218,11 +198,44 @@ Resolute is now setup to run and install the mod loader and mods, but more can b
 
 3. Right click (left trigger) the file and click `Add to Steam`
 
-It will now work in Game Mode. If you need to manually update it, you'll want to revisit the releases page and download the latest AppImage, replace the previous AppImage with the new file, and rename it to "resolute.AppImage" so nothing needs to be reconfigured in Steam.
+It will now work in Game Mode. If you need to manually update it, you'll want to revisit the releases page and download the latest AppImage, replace the previous AppImage with the new file, and rename it to "resolute.AppImage" (or whatever it was named before) so nothing needs to be reconfigured in Steam.
 
-Beyond this I recommend changing the QAM Scaling Mode to Stretch to fill the screen, but it's not required.
+**Recommended Mods**
 
-## ReShade
+*Available in Resolute:*
+
+- [CacheGetClapped](<https://github.com/dfgHiatus/CacheGetClapped>) - Smart cache management, clears old cache files and can keep cache size within specified limit. 
+
+    - *Highly Recommended, especially for 64/256 GB models.*
+
+- [DynBoneWrangler](<https://github.com/isovel/DynBoneWrangler>) - Disables dynamic bone chains when under a user specified fps limit and re-enables them when above another user specified fps limit.
+
+    - *Prevents shakey dynamic bones at frequently low framerates, may improve frame stability.*
+
+- [NoSteamScreenshots](<https://github.com/Raidriar796/NoSteamScreenshots>) - Prevents Steam from saving an additional copy of photos you save in game, this also stops hitches from saving photos
+
+    - *Highly recommended if you're primarily using in app cameras*
+
+- [ResoniteIkCulling](<https://github.com/Raidriar796/ResoniteIkCulling>) - Disables IK that's out of view and/or far away. Includes IK throttling options.
+
+    - *Primarily helps thermals and battery life in testing, highly recommended*
+
+- [ShadowDistanceChanger](<https://github.com/art0007i/ShadowDistanceChanger>) - Allows for the max range of shadow visibility to be configured.
+
+    - *Slight reduction of GPU power consumption when reduced at the cost of shadow quality, slightly recommended*
+
+Not available in Resolute:
+
+- [DisableFXAA](<https://github.com/FalsePattern/DisableFXAA>) - Disables FXAA anti aliasing.
+
+    - *Worsens upscale quality and causes jagged edges to be more jarring, but text readability is vastly improved*
+
+- [Outflow](<https://github.com/bluecyro/outflow>) - Reduces join lag by preventing streaming threads from being clogged by user joins, only applies to sessions you're hosting
+
+    - *Highly recommended if you host sessions often, I commend you if you host sessions often on Deck*
+
+
+## ReShade & vkbasalt
 
 It is possible to install ReShade on a Steam Deck, not only that but it does work with Resonite.
 
