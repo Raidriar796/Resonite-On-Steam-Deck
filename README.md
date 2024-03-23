@@ -12,6 +12,7 @@ This is a community maintained list of stuff you can do to improve using Resonit
 
 **Info**
 - [Steam Deck & Steam Deck OLED differences](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#steam-deck--steam-deck-oled-differences>)
+- [Wine Experimental Wayland Driver](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#wine-experimental-wayland-driver>)
 
 **Advanced**
 - [Headless Sessions](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#headless-sessions>)
@@ -118,6 +119,28 @@ The refreshed model of the Steam Deck has a good handful of differences that mak
 
 That's it. There's a lot of nice changes with the refreshed model but nothing game changing for Resonite, but it shouldn't perform any worse.
 
+## Wine Experimental Wayland Driver
+
+Wine 9.0 released with an experimental Wayland driver, which sounds great on paper, but has a lot of issues for use on the Steam Deck.
+
+**How do I get the Wayland driver?**
+
+The driver must be included with a flag on compilation and not every distribution of Wine includes the flag, so you may need to compile it yourself, which already adds a pretty high barrier to entry for the purposes of this guide.
+
+**Can it even work on the Deck?**
+
+In Game Mode, the display output is handled by Gamescope, which uses xwayland to make x11 apps output in Wayland, so it ends up doing nothing when using the Wayland driver.
+
+In Desktop Mode, the desktop session is x11, so once again the driver does nothing for us there. You can install the KDE Wayland session which, while disregarding the other issues that introduces, will allow you to use the driver.
+
+**So is there any benefit to the Wayland driver for Resonite on Deck?**
+
+Not really. You have to go pretty far out of your way to even get it set up and even then, you are working with tradeoffs by switching Desktop Mode to run in Wayland. There is a slight performance benefit in running it natively but you'll likely get practically equal performance out of just running Resonite in Game Mode.
+
+**What about Proton 9.0?**
+
+Proton 9.0 does not include the driver nor can you just download and compile it with the driver as the required files for compiling with the driver are not present in the repository. Some modifications of Proton 9.0 may include the driver but I am not aware of any that do yet.
+
 # Advanced
 
 ## Headless Sessions
@@ -222,7 +245,7 @@ It will now work in Game Mode. If you need to manually update it, you'll want to
 
 - [ShadowDistanceChanger](<https://github.com/art0007i/ShadowDistanceChanger>) - Allows for the max range of shadow visibility to be configured.
 
-    - *Slight reduction of GPU power consumption when reduced at the cost of shadow quality, slightly recommended*
+    - *Slight reduction of GPU power consumption when reduced at the cost of shadow quality but usually gives very little to no fps improvement, slightly recommended*
 
 Not available in Resolute:
 
