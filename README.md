@@ -166,7 +166,7 @@ The Steam Deck uses an A/B partition structure, where SteamOS sits on one partit
     - `sudo steamos-readonly disable`
     - `sudo pacman-key --init`
     - `sudo pacman-key --populate`
-    - `sudo pacman -Sy`
+    - `sudo pacman -Syy`
     - `sudo pacman -S mono`
 - *If installing Mono after a SteamOS update without rwfus, run the following command instead of the last command*
     - `sudo pacman -S --overwrite \* mono`
