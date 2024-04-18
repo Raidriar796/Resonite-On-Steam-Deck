@@ -17,7 +17,6 @@ This is a community maintained list of stuff you can do to improve using Resonit
 **Advanced**
 - [Headless Sessions](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#headless-sessions>)
 - [Mods](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#mods>)
-- [ReShade & vkbasalt](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#ReShade--vkbasalt>)
 - [VR](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#vr>)
 
 # Getting Started
@@ -67,7 +66,11 @@ To install Proton GE, either download [ProtonUp-Qt](<https://github.com/DavidoTe
 Unfortunately there's not much that can be done about this right now, but there are some options.
 **DISCLAIMER**, *I modify my own Steam Deck with 3rd party tools and hardware modifications to improve performance, my Steam Deck's performance is not indicative of a stock Steam Deck's performance.*
 
-**Readily available options (quick access menu/in app options)**
+**Readily available options from the In App Options (IAO) and Quick Access Menu (QAM)**
+
+*Graphics: Post Processing (IAO)* - Set all Post processing settings to 0 and disable anti-aliasing, but a couple of things to keep in mind: you may want to at least temporarily enable bloom when creating content as bloom does serve a practical use. You may also want to change the anti-aliasing to CTAA, SMAA, or TAA when upscaling (more info on upscaling later in this section).
+
+*Network: Asset Gathering (IAO)* - Concurrent Downloads defaults to 8, it can help performance and network usage to turn it down and may even help with general stability when items are spawned. Especially helpful on cellular data and slow internet.
 
 *Framerate Limit (QAM)* - Change at your discretion, in active sessions it's rare to have more then 30 fps currently so it's safe to limit it to 30 fps, though it will still run at 60 hz (90 hz on OLED). You can do 40 fps/hz to conserve power.
 
@@ -78,8 +81,6 @@ Unfortunately there's not much that can be done about this right now, but there 
 *Half Rate Shading (QAM)* - slightly reduces text readability (excluding the dashboard) and improves battery life, somewhat recommended
 
 *TDP Limit (QAM)* - From testing, Resonite seems to rarely use more then 10 watts, from my understanding due to the inability to run fast enough to draw more than 10 watts. Your milage may vary, tweak as needed.
-
-*Fixed GPU Clock (QAM)* - not tested enough, tweak as needed
 
 *Upscaling (QAM)* - you will need to force the game resolution in Steam (`Properties < General < Game resolution`). I recommend 1024x640 as that maintains text readability fairly well. you can go down to 800x500 and still have a decent experience but don't expect to read text very well. You'll also need to back out and go back into properties to enable the `Set resolution for internal and external display` option, from my experience that's needed in order for Resonite to respect this setting. *Do keep in mind that upscaling is trading GPU cost for CPU cost, and while that's usually a net gain, Resonite is currently CPU bound so the potential gain may not be worth it.*
 
@@ -166,7 +167,7 @@ The Steam Deck uses an A/B partition structure, where SteamOS sits on one partit
     - `sudo steamos-readonly disable`
     - `sudo pacman-key --init`
     - `sudo pacman-key --populate`
-    - `sudo pacman -Syy`
+    - `sudo pacman -Syu`
     - `sudo pacman -S mono`
 - *If installing Mono after a SteamOS update without rwfus, run the following command instead of the last command*
     - `sudo pacman -S --overwrite \* mono`
@@ -249,44 +250,9 @@ It will now work in Game Mode. If you need to manually update it, you'll want to
 
 Not available in Resolute:
 
-- [DisableFXAA](<https://github.com/FalsePattern/DisableFXAA>) - Disables FXAA anti aliasing.
-
-    - *Worsens upscale quality and causes jagged edges to be more jarring, but text readability is vastly improved*
-
 - [Outflow](<https://github.com/bluecyro/outflow>) - Reduces join lag by preventing streaming threads from being clogged by user joins, only applies to sessions you're hosting
 
     - *Highly recommended if you host sessions often, I commend you if you host sessions often on Deck*
-
-
-## ReShade & vkbasalt
-
-It is possible to install ReShade on a Steam Deck, not only that but it does work with Resonite.
-
-Now why would you want to do this? Currently the only options we have for antialiasing are FXAA and CTAA (with the launch argument `-ctaa`). Both aren't exactly great and some users, *myself included,* disable FXAA with a mod. Despite the increased jagged edges, it helps readability and clarity.
-
-This can be extended by supplying SMAA and Contrast Adaptive Sharpening (CAS) through ReShade for even better visuals. Of course, with ReShade installed you can use a plethora of other shaders, but the goal here is to at least get SMAA and CAS working. (I do not recommend this if you're not disabling FXAA, the visuals just get muddier)
-
-***Discliamer: This is assuming you're using Proton, this part of the guide will be updated when the native build is in a more functional state***
-
-Installation:
-
-1. Go to [reshade-steam-proton](<https://github.com/kevinlekiller/ReShade-steam-proton>) and follow the instructions to download and run the script
-
-2. Follow instructions and answer the prompts with 2 specific differences:
-- When prompted if you want the script to detect the right dll files, say no with `n`
-- When prompted to enter the dll override, enter `dxgi`
-
-3. Launch Resonite in either Desktop or Game Mode
-
-4. Press the Home key to open the ReShade window and enable SMAA.fx and CAS.fx
-
-The Steam virtual keyboard does not have the Home key, if you do not have an external keyboard, you can edit the ReShade.ini file in the Resonite folder and change the keybind referencing [this list](<https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.keys?view=windowsdesktop-6.0>)
-
-Now you can have SMAA and/or CAS in Resonite alongside whatever other shaders you may want to use, keep in mind heavy shaders come with heavy performance drops.
-
-Alternative method:
-
-If you'd like SMAA/CAS in a more broad sense, you can install [vkbasalt](<https://github.com/simons-public/steam-deck-vkbasalt-install>) to easily get SMAA/CAS system wide for anything running with vulkan (which applies to Resonite when using Proton). Downsides include no UI, disabling has to be done on a per game basis, and it supports reshade shaders and not every shader will work with vkbasalt.
 
 ## VR
 
