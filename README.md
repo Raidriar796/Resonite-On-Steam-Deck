@@ -270,10 +270,6 @@ It will now work in Game Mode. If you need to manually update it, you'll want to
 
     - *Primarily helps thermals and battery life in testing, highly recommended*
 
-- [ShadowDistanceChanger](<https://github.com/art0007i/ShadowDistanceChanger>) - Allows for the max range of shadow visibility to be configured.
-
-    - *Slight reduction of GPU power consumption when reduced at the cost of shadow quality but usually gives very little to no fps improvement, slightly recommended*
-
 Not available in Resolute:
 
 - [Outflow](<https://github.com/bluecyro/outflow>) - Reduces join lag by preventing streaming threads from being clogged by user joins, only applies to sessions you're hosting
