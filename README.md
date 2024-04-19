@@ -48,53 +48,79 @@ I've made a layout (creatively named "Raidriar's Layout") you can use that shoul
 
 ## Native or Proton
 
-Native is currently not recommended, as it requires manual fixing. You'll likely want to use Proton.
+Native is currently not recommended, as it requires manual fixing and runs in OpenGL as well as many other issues. You'll likely want to use Proton to get a remotely usable experience.
+
+By default Steam will download the native Linux build, in order to use the Windows version with Proton you will need to force it in Resonite's properties (`Properties < Compatibility`). From there you can choose any version of Proton you want.
 
 All tested & working Proton versions:
 - Proton 8
-- Proton 9
-- Proton Experimental
 - [Proton GE 8](<https://github.com/GloriousEggroll/proton-ge-custom>)
+- Proton 9
 - [Proton GE 9](<https://github.com/GloriousEggroll/proton-ge-custom>)
-
-By default Steam will download the native Linux build, in order to use the Windows version with Proton you will need to force it in Resonite's properties (`Properties < Compatibility`). From there you can choose any version of Proton you want.
+- Proton Experimental
 
 To install Proton GE, either download [ProtonUp-Qt](<https://github.com/DavidoTek/ProtonUp-Qt>) through discover in desktop mode, or use the [Wine Cellar](<https://github.com/FlashyReese/decky-wine-cellar>) plugin for [decky loader](<https://github.com/SteamDeckHomebrew/decky-loader>).
 
 ## Performance & Battery Life
 
-Unfortunately there's not much that can be done about this right now, but there are some options.
-**DISCLAIMER**, *I modify my own Steam Deck with 3rd party tools and hardware modifications to improve performance, my Steam Deck's performance is not indicative of a stock Steam Deck's performance.*
+This section will give recommended settings for Resonite and for the options in the Steam Deck's Quick Access Menu, You can go even lower then what's recommended here but I'm aiming to preserve visuals while still helping performance, feel free to go lower but keep in mind what you're doing in reducing the settings further.
 
-**Readily available options from the In App Options (IAO) and Quick Access Menu (QAM)**
+**DISCLAIMER:** *I modify my own Steam Deck with 3rd party tools and hardware modifications to improve performance, my Steam Deck's performance is not indicative of a stock Steam Deck's performance.*
 
-*Graphics: Post Processing (IAO)* - Set all Post processing settings to 0 and disable anti-aliasing, but a couple of things to keep in mind: you may want to at least temporarily enable bloom when creating content as bloom does serve a practical use. You may also want to change the anti-aliasing to CTAA, SMAA, or TAA when upscaling (more info on upscaling later in this section).
+**Recommended Resonite Settings**
 
-*Network: Asset Gathering (IAO)* - Concurrent Downloads defaults to 8, it can help performance and network usage to turn it down and may even help with general stability when items are spawned. Especially helpful on cellular data and slow internet.
+*Graphics < Rendering Quality*
+- Per Pixel Lights - 4
+- Shadow Cascades - None
+- Shadow Resolution - Low
+- Shadow Distance - 50
+- Skin Weights - Two Bones
 
-*Framerate Limit (QAM)* - Change at your discretion, in active sessions it's rare to have more then 30 fps currently so it's safe to limit it to 30 fps, though it will still run at 60 hz (90 hz on OLED). You can do 40 fps/hz to conserve power.
+*Graphics < Post Processing*
+- Motion Blur Intensity - 0%
+- Bloom Intensity - 50%
+  - Keep in mind - you may want to at least keep bloom on as it has little improvement when disabling, it additionally has a practical use in content creation and stuff may be designed around it.
+- Ambient Occlusion (AO) Intensity - 0%
+- Screen Space Reflections - Off
+- Antialiasing (AA) - Off 
+  - If you're upscaling, use CTAA, SMAA, or TAA
 
-*Disable Frame Limit (QAM)* - Disables Framerate Limit and falls back to 60 fps/hz, not recommended
+*Network < Asset Gathering*
+- Maximum number of concurrent asset transfers - 2
+  - This only effects sessions you're hosting
+- Maximum number of concurrent downloads - 4
 
-*Allow Tearing (QAM)* - No effect, Resonite forces vsync
-
-*Half Rate Shading (QAM)* - slightly reduces text readability (excluding the dashboard) and improves battery life, somewhat recommended
-
-*TDP Limit (QAM)* - From testing, Resonite seems to rarely use more then 10 watts, from my understanding due to the inability to run fast enough to draw more than 10 watts. Your milage may vary, tweak as needed.
-
-*Upscaling (QAM)* - you will need to force the game resolution in Steam (`Properties < General < Game resolution`). I recommend 1024x640 as that maintains text readability fairly well. you can go down to 800x500 and still have a decent experience but don't expect to read text very well. You'll also need to back out and go back into properties to enable the `Set resolution for internal and external display` option, from my experience that's needed in order for Resonite to respect this setting. *Do keep in mind that upscaling is trading GPU cost for CPU cost, and while that's usually a net gain, Resonite is currently CPU bound so the potential gain may not be worth it.*
+**Recommended Quick Access Menu Settings**
+- Framerate Limit - 40 fps/40 hz (40 fps/80 hz on OLED)
+- Disable Frame Limit - Off
+- Allow Tearing - On
+- Half Rate Shading - Off
+- TDP Limit - 9W
+- Manual GPU Clock - Off
+- Upscaling - FSR
+  - To be able to upscale, you will need to force the game resolution in Steam (`Properties < General < Game resolution`). You'll also need to back out and go back into properties to enable the `Set resolution for internal and external display` option.
+  - 1280x720 for docks
+  - 1024x640 for text readibility
+  - 800x500 for battery life
 
 **Launch Options (`Properties < General < Launch Options`)**
 
-`-donotautoloadhome` - Disables the cloud home from booting on startup, making startup quicker.
+- `-donotautoloadhome`
+  - Disables the cloud home from booting on startup, making startup quicker.
 
-`taskset -c 0,2,4,6 %command%` - "Disables" SMT for Resonite specifically, primarily beneficial on desktop mode or with multiple applications running. (if `%command%` is already there, only add `taskset -c 0,2,4,6`)
+- `taskset -c 0,2,4,6 %command%`
+  - Disallows SMT for Resonite specifically, primarily beneficial on desktop mode or with multiple applications running
+  - if `%command%` is already there, only add `taskset -c 0,2,4,6`
 
 **3rd Party Tools (use at your own risk)**
 
-[Cryo Utilities](<https://github.com/CryoByte33/steam-deck-utilities>) - RAM, VRAM, Swap, and storage optimizations. You'll likely need this to be able to reliable join moderately sized worlds without running out of RAM and crashing.
+- [Cryo Utilities](<https://github.com/CryoByte33/steam-deck-utilities>)
+  - RAM, VRAM, Swap, and storage optimizations.
+  - You'll likely need this to be able to reliable join moderately sized worlds without running out of RAM and crashing.
 
-[Powertools](<https://git.ngni.us/NG-SD-Plugins/PowerTools>) - [decky loader](<https://github.com/SteamDeckHomebrew/decky-loader>) plugin that exposes more options to tweak performance, for most users I'd only recommend this for the CPU governor options (the powersave option can extend the battery life quite a bit)
+- [Powertools](<https://git.ngni.us/NG-SD-Plugins/PowerTools>)
+  - [decky loader](<https://github.com/SteamDeckHomebrew/decky-loader>) plugin that exposes more options to tweak performance.
+  - For most users I'd only recommend this for the CPU governor options (the powersave option can extend the battery life quite a bit)
 
 ## Screenshot management with Proton
 
