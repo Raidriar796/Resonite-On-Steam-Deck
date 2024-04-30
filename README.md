@@ -69,6 +69,13 @@ This section will give recommended settings for Resonite and for the options in 
 
 **Recommended Resonite Settings**
 
+*User Interface*
+- Encode Format - WebP
+
+*Graphics < Resolution*
+- Fullscreen - On
+  - You will need to disable this to do upscaling
+
 *Graphics < Rendering Quality*
 - Per Pixel Lights - 4
 - Shadow Cascades - None
@@ -98,10 +105,10 @@ This section will give recommended settings for Resonite and for the options in 
 - TDP Limit - 9W
 - Manual GPU Clock - Off
 - Upscaling - FSR
-  - To be able to upscale, you will need to force the game resolution in Steam (`Properties < General < Game resolution`). You'll also need to back out and go back into properties to enable the `Set resolution for internal and external display` option.
+  - To be able to upscale, you will need to force the game resolution in Resonite by disabling fullscreen and setting a Window Resolution lower than the display's resolution
   - 1280x720 for docks
   - 1024x640 for text readibility
-  - 800x500 for battery life
+  - 960x600 for battery life
 
 **Launch Options (`Properties < General < Launch Options`)**
 
