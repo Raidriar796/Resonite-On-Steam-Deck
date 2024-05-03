@@ -72,6 +72,13 @@ This section will give recommended settings for Resonite and for the options in 
 *User Interface*
 - Encode Format - WebP
 
+*Graphics < Texture Quality*
+- Relative Texture Size - Half Size
+- Maximum Texture Size - Tex 1K
+- Limit Texture Above Resolution - 256
+- Texture Filtering - Anisotropic
+- Anisotropic Level - 16
+
 *Graphics < Resolution*
 - Fullscreen - On
   - You will need to disable this to do upscaling
@@ -80,8 +87,16 @@ This section will give recommended settings for Resonite and for the options in 
 - Per Pixel Lights - 4
 - Shadow Cascades - None
 - Shadow Resolution - Low
-- Shadow Distance - 50
+- Shadow Distance - 64
 - Skin Weights - Two Bones
+
+*Graphics < Desktop Render Settings*
+- Field of view - 70
+  - Recommended for uniform visuals, especially while creating content
+- VSync - Off
+- Limit framerate when in background - Off
+  - Only relevant when using Desktop Mode
+- Maximum background framerate - 10
 
 *Graphics < Post Processing*
 - Motion Blur Intensity - 0%
