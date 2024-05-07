@@ -69,8 +69,11 @@ This section will give recommended settings for Resonite and for the options in 
 
 **Recommended Resonite Settings**
 
-*User Interface*
+*User Interface < Quick Photo Capture*
 - Encode Format - WebP
+
+*Profile < Favorites*
+- Load cloud home on startup - Off
 
 *Graphics < Texture Quality*
 - Relative Texture Size - Half Size
@@ -112,6 +115,10 @@ This section will give recommended settings for Resonite and for the options in 
   - This only effects sessions you're hosting
 - Maximum number of concurrent downloads - 4
 
+*Integrations < Steam Integration*
+- Save Screenshots - Off
+  - This prevents saving photos twice, more info later in the guide
+
 **Recommended Quick Access Menu Settings**
 - Framerate Limit - 40 fps/40 hz (40 fps/80 hz on OLED)
 - Disable Frame Limit - Off
@@ -126,9 +133,6 @@ This section will give recommended settings for Resonite and for the options in 
   - 960x600 for battery life
 
 **Launch Options (`Properties < General < Launch Options`)**
-
-- `-donotautoloadhome`
-  - Disables the cloud home from booting on startup, making startup quicker.
 
 - `taskset -c 0,2,4,6 %command%`
   - Disallows SMT for Resonite specifically, primarily beneficial on desktop mode or with multiple applications running
@@ -283,10 +287,6 @@ It will now work in Game Mode. If you need to manually update it, you'll want to
 - [DynBoneWrangler](<https://github.com/isovel/DynBoneWrangler>) - Disables dynamic bone chains when under a user specified fps limit and re-enables them when above another user specified fps limit.
 
     - *Prevents shakey dynamic bones at frequently low framerates, may improve frame stability.*
-
-- [NoSteamScreenshots](<https://github.com/Raidriar796/NoSteamScreenshots>) - Prevents Steam from saving an additional copy of photos you save in game, this also stops hitches from saving photos
-
-    - *Highly recommended if you're primarily using in app cameras*
 
 - [ResoniteIkCulling](<https://github.com/Raidriar796/ResoniteIkCulling>) - Disables IK that's out of view and/or far away. Includes IK throttling options.
 
