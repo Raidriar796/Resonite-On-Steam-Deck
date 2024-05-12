@@ -50,7 +50,7 @@ I've made a layout (creatively named "Raidriar's Layout") you can use that shoul
 
 Native is currently not recommended, as it requires manual fixing and runs in OpenGL as well as many other issues. You'll likely want to use Proton to get a remotely usable experience.
 
-By default Steam will download the native Linux build, in order to use the Windows version with Proton you will need to force it in Resonite's properties (`Properties < Compatibility`). From there you can choose any version of Proton you want.
+By default Steam will download the Windows build with Proton 9 selected for you, in order to use the native version you will need to force it in Resonite's properties (`Properties < Compatibility`). From there you can choose [Steam-Play-None](<https://github.com/Scrumplex/Steam-Play-None>)
 
 All tested & working Proton versions:
 - Proton 8
@@ -59,7 +59,7 @@ All tested & working Proton versions:
 - [Proton GE 9](<https://github.com/GloriousEggroll/proton-ge-custom>)
 - Proton Experimental
 
-To install Proton GE, either download [ProtonUp-Qt](<https://github.com/DavidoTek/ProtonUp-Qt>) through discover in desktop mode, or use the [Wine Cellar](<https://github.com/FlashyReese/decky-wine-cellar>) plugin for [decky loader](<https://github.com/SteamDeckHomebrew/decky-loader>).
+To install Proton GE or Steam-Play-None, either download [ProtonUp-Qt](<https://github.com/DavidoTek/ProtonUp-Qt>) through discover in desktop mode, or use the [Wine Cellar](<https://github.com/FlashyReese/decky-wine-cellar>) plugin for [decky loader](<https://github.com/SteamDeckHomebrew/decky-loader>).
 
 ## Performance & Battery Life
 
@@ -96,7 +96,7 @@ This section will give recommended settings for Resonite and for the options in 
 *Graphics < Desktop Render Settings*
 - Field of view - 70
   - Recommended for uniform visuals, especially while creating content
-- VSync - Off
+- VSync - On
 - Limit framerate when in background - Off
   - Only relevant when using Desktop Mode
 - Maximum background framerate - 10
@@ -120,8 +120,8 @@ This section will give recommended settings for Resonite and for the options in 
   - This prevents saving photos twice, more info later in the guide
 
 **Recommended Quick Access Menu Settings**
-- Framerate Limit - 40 fps/40 hz (40 fps/80 hz on OLED)
-- Disable Frame Limit - Off
+- Framerate Limit/Refresh Rate - 40 fps/40 hz (40 fps/80 hz on OLED)
+- Disable Frame Limit - On
 - Allow Tearing - On
 - Half Rate Shading - Off
 - TDP Limit - 9W
