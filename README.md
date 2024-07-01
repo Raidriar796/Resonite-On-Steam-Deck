@@ -83,8 +83,8 @@ This section will give recommended settings for Resonite and for the options in 
 - Anisotropic Level - 16
 
 *Graphics < Resolution*
-- Fullscreen - On
-  - You will need to disable this to do upscaling
+- Fullscreen - Off
+  - Upscaling won't work if this is enabled, but you can use it as an upscaling toggle of sorts
 
 *Graphics < Rendering Quality*
 - Per Pixel Lights - 4
@@ -108,7 +108,9 @@ This section will give recommended settings for Resonite and for the options in 
 - Ambient Occlusion (AO) Intensity - 0%
 - Screen Space Reflections - Off
 - Antialiasing (AA) - Off 
-  - If you're upscaling, use CTAA, SMAA, or TAA
+  - If you're upscaling:
+    - CTAA with FSR Sharpness 3 for general use
+    - SMAA with FSR Sharpness 1 for content creation/text readibility
 
 *Network < Asset Gathering*
 - Maximum number of concurrent asset transfers - 2
@@ -134,9 +136,15 @@ This section will give recommended settings for Resonite and for the options in 
 
 **Launch Options (`Properties < General < Launch Options`)**
 
-- `taskset -c 0,2,4,6 %command%`
-  - Disallows SMT for Resonite specifically, primarily beneficial on desktop mode or with multiple applications running
-  - if `%command%` is already there, only add `taskset -c 0,2,4,6`
+- `taskset -c 0-5 %command% -BackgroundWorkers 6 -PriorityWorkers 5`
+
+  - This specific `taskset` command only allows Resonite to use the first 3 cores of the system, leaving the last core available for the rest of the system. This will reduce Resonite's multithreading performance but will prevent the system from suffocating in heavier sessions, especially on Desktop Mode.
+
+  - `%command%` is what steam uses to figure out where to put launch args, so you can insert environment variables and launch arguments before and after the actual command to run the game.
+
+  - `-BackgroundWorkers 6` reduces the background workers in Resonite to match the CPU affinity set by `taskset`, Resonite usually automatically allocates background workers based on your CPU thread count.
+
+  - `-PriorityWorkers 5` reduces the priority workers in Resonite to match the CPU affinity set by `taskset`, Resonite usually automatically allocates priority workers based on your CPU thread count minus 1.
 
 **3rd Party Tools (use at your own risk)**
 
@@ -293,6 +301,9 @@ It will now work in Game Mode. If you need to manually update it, you'll want to
     - *Primarily helps thermals and battery life in testing, highly recommended*
 
 Not available in Resolute:
+
+- [Effortless Efficiency](<https://github.com/BlueCyro/EffortlessEfficiency/releases/tag/1.0.0>) - Improves microstuttering, hitching, and freezing.
+    - *Highly recommended, period.*
 
 - [Outflow](<https://github.com/bluecyro/outflow>) - Reduces join lag by preventing streaming threads from being clogged by user joins, only applies to sessions you're hosting
 
