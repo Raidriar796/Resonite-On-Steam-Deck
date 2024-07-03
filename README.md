@@ -48,9 +48,9 @@ I've made a layout (creatively named "Raidriar's Layout") you can use that shoul
 
 ## Native or Proton
 
-Native is currently not recommended, as it requires manual fixing and runs in OpenGL as well as many other issues. You'll likely want to use Proton to get a remotely usable experience.
+Native is currently not recommended, as it has many issues the Windows build doesn't. Proton is selected for you so there's not much you need to do.
 
-By default Steam will download the Windows build with Proton 9 selected for you, in order to use the native version you will need to force it in Resonite's properties (`Properties < Compatibility`). From there you can choose [Steam-Play-None](<https://github.com/Scrumplex/Steam-Play-None>)
+If you still want to use the native build, you will need to force it in Resonite's properties (`Properties < Compatibility`). From there you can choose Steam-Linux-Runtime or [Steam-Play-None](<https://github.com/Scrumplex/Steam-Play-None>)
 
 All tested & working Proton versions:
 - Proton 8
@@ -296,14 +296,14 @@ It will now work in Game Mode. If you need to manually update it, you'll want to
 
     - *Prevents shakey dynamic bones at frequently low framerates, may improve frame stability.*
 
+- [Effortless Efficiency](<https://github.com/BlueCyro/EffortlessEfficiency/releases/tag/1.0.0>) - slightly improves microstuttering and hitching, especially if you're also using CherryPick.
+    - *Highly recommended, period.*
+
 - [ResoniteIkCulling](<https://github.com/Raidriar796/ResoniteIkCulling>) - Disables IK that's out of view and/or far away. Includes IK throttling options.
 
     - *Primarily helps thermals and battery life in testing, highly recommended*
 
 Not available in Resolute:
-
-- [Effortless Efficiency](<https://github.com/BlueCyro/EffortlessEfficiency/releases/tag/1.0.0>) - Improves microstuttering, hitching, and freezing.
-    - *Highly recommended, period.*
 
 - [Outflow](<https://github.com/bluecyro/outflow>) - Reduces join lag by preventing streaming threads from being clogged by user joins, only applies to sessions you're hosting
 
@@ -313,4 +313,4 @@ Not available in Resolute:
 
 **No.**
 
-While it is possible to run VR on a Steam Deck, people have run Resonite in VR on a Steam Deck, but the experience is pretty awful in anything that's not an incredibly light session, it also puts a lot of strain on the Steam Deck. I cannot recommend trying it for any serious reason.
+While it is possible to run VR on a Steam Deck, I and other Resonite users have run Resonite in VR on a Steam Deck, but the experience is pretty awful in anything that's not an incredibly light session, it also puts a lot of strain on the Steam Deck. I cannot recommend trying it for any serious reason.
