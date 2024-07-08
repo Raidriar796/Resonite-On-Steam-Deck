@@ -78,9 +78,9 @@ This section will give recommended settings for Resonite and for the options in 
 *Graphics < Texture Quality*
 - Relative Texture Size - Half Size
 - Maximum Texture Size - Tex 1K
-- Limit Texture Above Resolution - 256
+- Limit Texture Above Resolution - 512
 - Texture Filtering - Anisotropic
-- Anisotropic Level - 16
+- Anisotropic Level - 4
 
 *Graphics < Resolution*
 - Fullscreen - Off
