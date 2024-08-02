@@ -76,7 +76,7 @@ This section will give recommended settings for Resonite and for the options in 
 - Load cloud home on startup - Off
 
 *Graphics < Texture Quality*
-- Relative Texture Size - Half Size
+- Relative Texture Size - Quarter Size
 - Maximum Texture Size - Tex 1K
 - Limit Texture Above Resolution - 512
 - Texture Filtering - Anisotropic
@@ -96,7 +96,7 @@ This section will give recommended settings for Resonite and for the options in 
 *Graphics < Desktop Render Settings*
 - Field of view - 70
   - Recommended for uniform visuals, especially while creating content
-- VSync - On
+- VSync - Off
 - Limit framerate when in background - Off
   - Only relevant when using Desktop Mode
 - Maximum background framerate - 10
@@ -122,8 +122,21 @@ This section will give recommended settings for Resonite and for the options in 
   - This prevents saving photos twice, more info later in the guide
 
 **Recommended Quick Access Menu Settings**
-- Framerate Limit/Refresh Rate - 40 fps/40 hz (40 fps/80 hz on OLED)
+
+*Note: framerate limit and refresh rate settings will vary if you have unified frame limit management enabled*
+
+Relevant setting: `Steam Menu < Settings < Display < Enable Unified Frame Limit Management`
+
+*With unified frame limit management:*
+- Frame limit - n/a
+  - This setting is locked when the frame limit is disabled on the current stable branch of SteamOS
 - Disable Frame Limit - On
+
+*Without unified frame limit management:*
+- Framerate Limit - Off
+- Refresh Rate - 40 hz on LCD/40 hz or 80 hz on OLED
+
+*Unaffected by unified frame limit management:*
 - Allow Tearing - On
 - Half Rate Shading - Off
 - TDP Limit - 9W
@@ -136,7 +149,14 @@ This section will give recommended settings for Resonite and for the options in 
 
 **Launch Options (`Properties < General < Launch Options`)**
 
-- `taskset -c 0-5 %command% -BackgroundWorkers 6 -PriorityWorkers 5`
+- `DXVK_FRAME_RATE=60 taskset -c 0-5 %command% -BackgroundWorkers 6 -PriorityWorkers 5`
+
+  - `DXVK_FRAME_RATE=` is an environment variable which specifies a framerate limit at a lower level than setting it in Steam or Resonite. Here's a couple of recommended values:
+    - `60` for smoothness (you will rarely hit 60 under normal usage)
+
+    - `40` for 40/80 hz refresh rate power saving
+
+    - `30` for general power saving 
 
   - This specific `taskset` command only allows Resonite to use the first 3 cores of the system, leaving the last core available for the rest of the system. This will reduce Resonite's multithreading performance but will prevent the system from suffocating in heavier sessions, especially on Desktop Mode.
 
@@ -296,14 +316,9 @@ It will now work in Game Mode. If you need to manually update it, you'll want to
 
     - *Prevents shakey dynamic bones at frequently low framerates, may improve frame stability.*
 
-- [Effortless Efficiency](<https://github.com/BlueCyro/EffortlessEfficiency/releases/tag/1.0.0>) - slightly improves microstuttering and hitching, especially if you're also using CherryPick.
-    - *Highly recommended, period.*
-
 - [ResoniteIkCulling](<https://github.com/Raidriar796/ResoniteIkCulling>) - Disables IK that's out of view and/or far away. Includes IK throttling options.
 
     - *Primarily helps thermals and battery life in testing, highly recommended*
-
-Not available in Resolute:
 
 - [Outflow](<https://github.com/bluecyro/outflow>) - Reduces join lag by preventing streaming threads from being clogged by user joins, only applies to sessions you're hosting
 
