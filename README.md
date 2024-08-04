@@ -23,7 +23,9 @@ This is a community maintained list of stuff you can do to improve using Resonit
 
 ## Controls
 
-I've made a layout (creatively named "Raidriar's Layout") you can use that should cover the majority of controls you might commonly use, I have some buttons left over as I plan on expanding the layout but it should remain mostly similar to how it is now. There are more layouts the community has made but I will be going over mine here.
+I've made a layout (creatively named "Raidriar's Layout") you can use that should cover the majority of common controls, I have some buttons left over as I plan on expanding the layout but it should remain mostly similar to how it is now.
+
+There are more layouts the community has made and I recommend checking other's out to see if another one works for you better. This guide for now will be focusing on just the one I'm making.
 
 - *A* - Jump
 - *B* - Crouch
@@ -46,20 +48,28 @@ I've made a layout (creatively named "Raidriar's Layout") you can use that shoul
 - *Right Trackpad* - Finer mouse controls
 - *Left Trackpad* - ToolTip Radial Menu
 
+In the event you cannot download the layout through Steam directly, you can download it from this repo by right clicking (left trigger) the following link and clicking `Save Link As...`
+
+[**Raidriar's Layout**](<https://raw.githubusercontent.com/Raidriar796/Resonite-On-Steam-Deck/main/controller_neptune.vdf>)
+
+The file will need to be placed in this directory:
+
+`/home/deck/.local/share/Steam/steamapps/common/Steam Controller Configs/[your Steam ID]/config/2519830`
+
 ## Native or Proton
 
 Native is currently not recommended, as it has many issues the Windows build doesn't. Proton is selected for you so there's not much you need to do.
 
-If you still want to use the native build, you will need to force it in Resonite's properties (`Properties < Compatibility`). From there you can choose Steam-Linux-Runtime or [Steam-Play-None](<https://github.com/Scrumplex/Steam-Play-None>)
+If you still want to use the native build, you will need to force it in Resonite's properties (`Properties < Compatibility`). From there you can choose Steam-Linux-Runtime or Steam-Play-None
 
 All tested & working Proton versions:
 - Proton 8
-- [Proton GE 8](<https://github.com/GloriousEggroll/proton-ge-custom>)
+- Proton GE 8
 - Proton 9
-- [Proton GE 9](<https://github.com/GloriousEggroll/proton-ge-custom>)
+- Proton GE 9
 - Proton Experimental
 
-To install Proton GE or Steam-Play-None, either download [ProtonUp-Qt](<https://github.com/DavidoTek/ProtonUp-Qt>) through discover in desktop mode, or use the [Wine Cellar](<https://github.com/FlashyReese/decky-wine-cellar>) plugin for [decky loader](<https://github.com/SteamDeckHomebrew/decky-loader>).
+To install [Proton GE](<https://github.com/GloriousEggroll/proton-ge-custom>) or [Steam-Play-None](<https://github.com/Scrumplex/Steam-Play-None>), either download [ProtonUp-Qt](<https://github.com/DavidoTek/ProtonUp-Qt>) through discover in desktop mode, or use the [Wine Cellar](<https://github.com/FlashyReese/decky-wine-cellar>) plugin for [decky loader](<https://github.com/SteamDeckHomebrew/decky-loader>).
 
 ## Performance & Battery Life
 
