@@ -58,6 +58,8 @@ The file will need to be placed in this directory:
 
 ## Native or Proton
 
+**The native build will be deprecated soon, this will update soon once the change is in effect**
+
 Native is currently not recommended, as it has many issues the Windows build doesn't. Proton is selected for you so there's not much you need to do.
 
 If you still want to use the native build, you will need to force it in Resonite's properties (`Properties < Compatibility`). From there you can choose Steam-Linux-Runtime or Steam-Play-None
@@ -235,6 +237,8 @@ Proton 9.0 does not include the driver nor can you just download and compile it 
 # Advanced
 
 ## Headless Sessions
+
+**The headless client has updated to use .Net 8.0 instead of Mono for it's runtime. This part of the guide is currently out of date but the process is mostly the same for the new version. An update is in the works**
 
 Yes, it is possible to run Headless sessions without containers or virtual machines on a Steam Deck. Yes, it performs well, incredibly well actually.
 
