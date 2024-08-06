@@ -246,7 +246,11 @@ Yes, it is possible to run Headless sessions without containers or virtual machi
 
 This is gonna be the most advanced section in this guide so I'd only recommend this if you're comfortable with terminals.
 
-This guide will go over installing and running the headless client completely natively, if you want to run a virtual machine instead (giving you a more traditional headless client experience) then install Gnome Boxes from discover and follow a normal setup guide.
+This guide will go over installing and running the headless client completely natively, if you want to run a virtual machine instead (giving you a more traditional headless client experience) then install Gnome Boxes from discover and follow a normal setup guide, I recommend either of the following guides:
+
+- [Resonite Wiki](<https://wiki.resonite.com/Headless_Server_Software/Setup>)
+
+- [Bredo's Guide](<https://gist.github.com/bredo228/ac063763f6acf35532716d66c2313821>)
 
 The Headless client is not provided with Resonite, it is required that you pay for the appropriate Patreon tier in order to gain access to the software. This guide assumes you have access to the client already if you're continuing through this section.
 
