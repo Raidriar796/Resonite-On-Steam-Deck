@@ -79,6 +79,51 @@ This section will give recommended settings for Resonite and for the options in 
 
 **DISCLAIMER:** *I modify my own Steam Deck with 3rd party tools and hardware modifications to improve performance, my Steam Deck's performance is not indicative of a stock Steam Deck's performance.*
 
+**Launch Options (`Properties < General < Launch Options`)**
+
+- `DXVK_FRAME_RATE=60 taskset -c 0-5 %command% -BackgroundWorkers 6 -PriorityWorkers 5`
+
+  - `DXVK_FRAME_RATE=` is an environment variable which specifies a framerate limit at a lower level than setting it in Steam or Resonite. Here's a couple of recommended values:
+    - `60` for smoothness (you will rarely hit 60 under normal usage)
+
+    - `40` for 40/80 hz refresh rate power saving
+
+    - `30` for general power saving 
+
+  - This specific `taskset` command only allows Resonite to use the first 3 cores of the system, leaving the last core available for the rest of the system. This will reduce Resonite's multithreading performance but will prevent the system from suffocating in heavier sessions, especially on Desktop Mode.
+
+  - `%command%` is what steam uses to figure out where to put launch args, so you can insert environment variables and launch arguments before and after the actual command to run the game.
+
+  - `-BackgroundWorkers 6` reduces the background workers in Resonite to match the CPU affinity set by `taskset`, Resonite usually automatically allocates background workers based on your CPU thread count.
+
+  - `-PriorityWorkers 5` reduces the priority workers in Resonite to match the CPU affinity set by `taskset`, Resonite usually automatically allocates priority workers based on your CPU thread count minus 1.
+
+**Recommended Quick Access Menu Settings**
+
+*Note: framerate limit and refresh rate settings will vary if you have unified frame limit management enabled*
+
+Relevant setting: `Steam Menu < Settings < Display < Enable Unified Frame Limit Management`
+
+*With unified frame limit management:*
+- Frame limit - n/a
+  - This setting is locked when the frame limit is disabled on the current stable branch of SteamOS
+- Disable Frame Limit - On
+
+*Without unified frame limit management:*
+- Framerate Limit - Off
+- Refresh Rate - 40 hz on LCD/40 hz or 80 hz on OLED
+
+*Unaffected by unified frame limit management:*
+- Allow Tearing - On
+- Half Rate Shading - Off
+- TDP Limit - 9W
+- Manual GPU Clock - Off
+- Upscaling - FSR
+  - To be able to upscale, you will need to force the game resolution in Resonite by disabling fullscreen and setting a Window Resolution lower than the display's resolution
+  - 1280x720 for docks
+  - 1024x640 for text readibility
+  - 960x600 for battery life
+
 **Recommended Resonite Settings**
 
 *User Interface < Quick Photo Capture*
@@ -132,51 +177,6 @@ This section will give recommended settings for Resonite and for the options in 
 *Integrations < Steam Integration*
 - Save Screenshots - Off
   - This prevents saving photos twice, more info later in the guide
-
-**Recommended Quick Access Menu Settings**
-
-*Note: framerate limit and refresh rate settings will vary if you have unified frame limit management enabled*
-
-Relevant setting: `Steam Menu < Settings < Display < Enable Unified Frame Limit Management`
-
-*With unified frame limit management:*
-- Frame limit - n/a
-  - This setting is locked when the frame limit is disabled on the current stable branch of SteamOS
-- Disable Frame Limit - On
-
-*Without unified frame limit management:*
-- Framerate Limit - Off
-- Refresh Rate - 40 hz on LCD/40 hz or 80 hz on OLED
-
-*Unaffected by unified frame limit management:*
-- Allow Tearing - On
-- Half Rate Shading - Off
-- TDP Limit - 9W
-- Manual GPU Clock - Off
-- Upscaling - FSR
-  - To be able to upscale, you will need to force the game resolution in Resonite by disabling fullscreen and setting a Window Resolution lower than the display's resolution
-  - 1280x720 for docks
-  - 1024x640 for text readibility
-  - 960x600 for battery life
-
-**Launch Options (`Properties < General < Launch Options`)**
-
-- `DXVK_FRAME_RATE=60 taskset -c 0-5 %command% -BackgroundWorkers 6 -PriorityWorkers 5`
-
-  - `DXVK_FRAME_RATE=` is an environment variable which specifies a framerate limit at a lower level than setting it in Steam or Resonite. Here's a couple of recommended values:
-    - `60` for smoothness (you will rarely hit 60 under normal usage)
-
-    - `40` for 40/80 hz refresh rate power saving
-
-    - `30` for general power saving 
-
-  - This specific `taskset` command only allows Resonite to use the first 3 cores of the system, leaving the last core available for the rest of the system. This will reduce Resonite's multithreading performance but will prevent the system from suffocating in heavier sessions, especially on Desktop Mode.
-
-  - `%command%` is what steam uses to figure out where to put launch args, so you can insert environment variables and launch arguments before and after the actual command to run the game.
-
-  - `-BackgroundWorkers 6` reduces the background workers in Resonite to match the CPU affinity set by `taskset`, Resonite usually automatically allocates background workers based on your CPU thread count.
-
-  - `-PriorityWorkers 5` reduces the priority workers in Resonite to match the CPU affinity set by `taskset`, Resonite usually automatically allocates priority workers based on your CPU thread count minus 1.
 
 **3rd Party Tools (use at your own risk)**
 
