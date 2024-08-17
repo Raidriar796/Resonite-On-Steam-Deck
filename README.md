@@ -81,7 +81,7 @@ This section will give recommended settings for Resonite and for the options in 
 
 **Launch Options (`Properties < General < Launch Options`)**
 
-- `DXVK_FRAME_RATE=60 taskset -c 0-5 %command% -BackgroundWorkers 6 -PriorityWorkers 5`
+- `DXVK_FRAME_RATE=60 taskset -c 0-5 nice -10 ionice -n 0 %command% -BackgroundWorkers 6 -PriorityWorkers 5`
 
   - `DXVK_FRAME_RATE=` is an environment variable which specifies a framerate limit at a lower level than setting it in Steam or Resonite. Here's a couple of recommended values:
     - `60` for smoothness (you will rarely hit 60 under normal usage)
@@ -90,7 +90,11 @@ This section will give recommended settings for Resonite and for the options in 
 
     - `30` for general power saving 
 
-  - This specific `taskset` command only allows Resonite to use the first 3 cores of the system, leaving the last core available for the rest of the system. This will reduce Resonite's multithreading performance but will prevent the system from suffocating in heavier sessions, especially on Desktop Mode.
+  - `taskset` with `-c 0-5` only allows Resonite to use the first 3 cores of the system, leaving the last core available for the rest of the system. This will reduce Resonite's multithreading performance but will prevent the system from suffocating in heavier sessions, especially on Desktop Mode.
+
+  - `nice` lets you specify how much a process is likely to share resources with the system, ranging from -20 to 20. `-10` will make Resonite more likely to hog resources but perform better.
+
+  - `ionice`, similarly to `nice`, determines the disk I/O priority of an application with 2 metrics, the class and the priority. `-n 0` sets the priority to 0, which is the highest priority. Priority ranges from 0 to 7. This will have a much more significant impact on downloading/loading worlds and objects.
 
   - `%command%` is what steam uses to figure out where to put launch args, so you can insert environment variables and launch arguments before and after the actual command to run the game.
 
@@ -238,7 +242,7 @@ Proton 9.0 does not include the driver nor can you just download and compile it 
 
 ## Headless Sessions
 
-**The headless client has updated to use .Net 8.0 instead of Mono for it's runtime. This part of the guide is currently out of date but the process is mostly the same for the new version. An update is in the works**
+**A rewrite is planned for this section, while this works, it may cause more issues than it's worth.**
 
 Yes, it is possible to run Headless sessions without containers or virtual machines on a Steam Deck. Yes, it performs well, incredibly well actually.
 
@@ -266,10 +270,10 @@ The Steam Deck uses an A/B partition structure, where SteamOS sits on one partit
     - `sudo pacman-key --init`
     - `sudo pacman-key --populate`
     - `sudo pacman -Syu`
-    - `sudo pacman -S mono`
-- *If installing Mono after a SteamOS update without rwfus, run the following command instead of the last command*
-    - `sudo pacman -S --overwrite \* mono`
-- To make sure mono is installed, run `mono --version`. As of writing it should be version 6.12.0.
+    - `sudo pacman -S dotnet-runtime-bin`
+- *If installing dotnet runtime after a SteamOS update without rwfus, you may need to run the following command instead of the last command for it to work*
+    - `sudo pacman -S --overwrite \* dotnet-runtime-bin`
+- To make sure dotnet is installed, run `dotnet --version`.
 
 2. Install the Headless client
 - Open your steam library and go to Resonite
@@ -278,7 +282,7 @@ The Steam Deck uses an A/B partition structure, where SteamOS sits on one partit
 - Change from "None" to "headless - Builds including headless server" and wait for Steam to update Resonite. *Note: disable force using Proton if you aren't already using the native Linux build.*
 - Open Konsole and run the following commands:
     - `cd ~/.steam/steam/steamapps/common/Resonite/Headless`
-    - `mono Resonite.exe`
+    - `dotnet ./Resonite.dll`
 - The Headless client should startup, you can shut it down whenever, this is just to make sure it's working and to generate any needed files.
 
 3. Configure the Headless client
