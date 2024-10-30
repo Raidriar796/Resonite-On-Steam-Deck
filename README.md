@@ -240,7 +240,7 @@ Proton 9.0 does not include the driver nor can you just download and compile it 
 
 # Advanced
 
-## Headless Sessions
+## Headless Sessions (OUT OF DATE - UPDATE PLANNED FOR STEAMOS 3.6.19 CHANGES)
 
 **A rewrite is planned for this section, while this works, it may cause more issues than it's worth.**
 
