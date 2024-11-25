@@ -15,7 +15,7 @@ This is a community maintained list of stuff you can do to improve using Resonit
 - [Wine Experimental Wayland Driver](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#wine-experimental-wayland-driver>)
 
 **Advanced**
-- [Headless Sessions](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#headless-sessions>)
+- [Headless Sessions](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#headless-client>)
 - [Mods](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#mods>)
 - [VR](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#vr>)
 
@@ -58,11 +58,11 @@ The file will need to be placed in this directory:
 
 ## Native or Proton
 
-**The native build will be deprecated soon, this will update soon once the change is in effect**
+**The native build will be deprecated soon, this will update once the change is in effect**
 
-Native is currently not recommended, as it has many issues the Windows build doesn't. Proton is selected for you so there's not much you need to do.
+Native is currently not recommended, as it has many issues the Windows build doesn't.
 
-If you still want to use the native build, you will need to force it in Resonite's properties (`Properties < Compatibility`). From there you can choose Steam-Linux-Runtime or Steam-Play-None
+If you still want to use the native build, you can set it in Resonite's properties (`Properties < Compatibility`). From there you can choose Steam-Linux-Runtime or Steam-Play-None
 
 All tested & working Proton versions:
 - Proton 8
@@ -81,7 +81,7 @@ This section will give recommended settings for Resonite and for the options in 
 
 **Launch Options (`Properties < General < Launch Options`)**
 
-- `DXVK_FRAME_RATE=60 taskset -c 0-5 nice -n -20 ionice -n 0 %command% -BackgroundWorkers 6 -PriorityWorkers 5`
+- `DXVK_FRAME_RATE=60 taskset -c 0-5 nice -n -10 ionice -n 0 %command% -BackgroundWorkers 6 -PriorityWorkers 5`
 
   - `DXVK_FRAME_RATE=` is an environment variable which specifies a framerate limit at a lower level than setting it in Steam or Resonite. Here's a couple of recommended values:
     - `60` for smoothness (you will rarely hit 60 under normal usage)
@@ -196,11 +196,22 @@ Relevant setting: `Steam Menu < Settings < Display < Enable Unified Frame Limit 
 
 When using Proton, steam will create a lot of extra folders that mimic the folder structure of Windows to allow for compatibility when games try to reference Windows specific directories. This is important because Resonite has an in game screenshot function which saves to `C:\Users\[YourUser]\Pictures\Resonite` by default. This causes Resonite to save screenshots to a really annoying location, this can be made easier though. To do so:
 
+- ### GUI
+
 1. Go to `/home/deck/.steam/steam/steamapps/compatdata/2519830/pfx/drive_c/users/steamuser/pictures/`
 
 2. Left trigger (right click) and do `Create New > Link to File or Directory...`
 
 3. Set the name to "Resonite" and the directory to `/home/deck/Pictures/Resonite` (or anywhere else you may want to save screenshots to)
+
+- ### CLI
+
+1. Run the following commands:
+
+    ```shell
+    mkdir ~/Pictures/Resonite
+    ln -s ~/Pictures/Resonite ~/.steam/steam/steamapps/compatdata/2519830/pfx/drive_c/users/steamuser/pictures/
+    ```
 
 Now whenever Resonite saves a photo, it tries to save to `C:\Users\[YourUser]\Pictures\Resonite` but instead saves it to `/home/deck/Pictures/Resonite` or another directory of your choosing.
 
@@ -208,7 +219,7 @@ Now whenever Resonite saves a photo, it tries to save to `C:\Users\[YourUser]\Pi
 
 ## Steam Deck & Steam Deck OLED differences
 
-The refreshed model of the Steam Deck has a good handful of differences that make the device better overall. Despite this, you shouldn't expect better performance with the refreshed model. Here's what you can expect with the Steam Deck OLED.
+The refreshed model of the Steam Deck has a good handful of differences that make the device better overall. Despite this, you shouldn't vastly expect better performance with the refreshed model. Here's what you can expect with the Steam Deck OLED.
 
 - Longer battery life - the more efficient APU as well as the larger battery will allow for longer usage
 - Faster RAM - the refreshed model contains RAM speeds of 6400 MT/s, compared to the original model's 5500 MT/s, that's a pretty huge jump, but not world changing. This will allow for faster asset loading in Resonite.
@@ -234,15 +245,15 @@ In Desktop Mode, the desktop session is x11, so once again the driver does nothi
 
 Not really. You have to go pretty far out of your way to even get it set up and even then, you are working with tradeoffs by switching Desktop Mode to run in Wayland. There is a slight performance benefit in running it natively but you'll likely get practically equal performance out of just running Resonite in Game Mode.
 
+The wayland driver also causes issues with drag and drop and reading the clipboard, which can make certain workflows more janky.
+
 **What about Proton 9.0?**
 
 Proton 9.0 does not include the driver nor can you just download and compile it with the driver as the required files for compiling with the driver are not present in the repository. Some modifications of Proton 9.0 may include the driver but I am not aware of any that do yet.
 
 # Advanced
 
-## Headless Sessions (OUT OF DATE - UPDATE PLANNED FOR STEAMOS 3.6.19 CHANGES)
-
-**A rewrite is planned for this section, while this works, it may cause more issues than it's worth.**
+## Headless Client
 
 Yes, it is possible to run Headless sessions without containers or virtual machines on a Steam Deck. Yes, it performs well, incredibly well actually.
 
@@ -258,39 +269,57 @@ This guide will go over installing and running the headless client completely na
 
 The Headless client is not provided with Resonite, it is required that you pay for the appropriate Patreon tier in order to gain access to the software. This guide assumes you have access to the client already if you're continuing through this section.
 
-The Steam Deck uses an A/B partition structure, where SteamOS sits on one partition that is mostly reset whenever SteamOS updates, and the other partition is where all user data is stored and is not touched by updates. With this in mind, everything we're about to install with the terminal *will* be deleted whenever SteamOS updates. The setup process requires a slight difference in installation after an update, but there is an alternative to installing what's needed everytime. The tool [rwfus](<https://github.com/ValShaped/rwfus>) allows you to download packages through the terminal and have them persist through SteamOS updates, **use this at your own risk.**
+### Installation & Setup
 
-**Installation & Setup**
+- ### Install the Dotnet Runtime
+1. Switch to desktop mode and open Konsole
+2. Set up a password with the following command if you haven't already:
 
-1. Install Mono
-- Switch to desktop mode and open Konsole
-- Set up a password with the `passwd` command if you haven't already
-- Run the following commands:
-    - `sudo steamos-readonly disable`
-    - `sudo pacman-key --init`
-    - `sudo pacman-key --populate`
-    - `sudo pacman -Syu`
-    - `sudo pacman -S dotnet-runtime-bin`
-- *If installing dotnet runtime after a SteamOS update without rwfus, you may need to run the following command instead of the last command for it to work*
-    - `sudo pacman -S --overwrite \* dotnet-runtime-bin`
-- To make sure dotnet is installed, run `dotnet --version`.
+    ```shell
+    passwd
+    ```
+3. Run the following commands:
 
-2. Install the Headless client
-- Open your steam library and go to Resonite
-- Go into Properties and into the Betas tab
-- Enter the beta code for the Headless client if not done already
-- Change from "None" to "headless - Builds including headless server" and wait for Steam to update Resonite. *Note: disable force using Proton if you aren't already using the native Linux build.*
-- Open Konsole and run the following commands:
-    - `cd ~/.steam/steam/steamapps/common/Resonite/Headless`
-    - `dotnet ./Resonite.dll`
-- The Headless client should startup, you can shut it down whenever, this is just to make sure it's working and to generate any needed files.
+    ```shell
+    sudo steamos-devmode
+    sudo pacman -S dotnet-runtime
+    ```
+4. To make sure dotnet is installed, run:
 
-3. Configure the Headless client
-- Go to the directory `/home/deck/.local/share/Steam/steamapps/common/Resonite/Headless/Config/` in Dolphin or Konsole
-- duplicate "DefaultConfig.json" and name the new file "Config.json"
-- Modify "Config.json" as needed, primarily account credentials, worlds to run, and permissions.
+    ```shell
+    dotnet --version
+    ```
+
+- ### Install the Headless client
+1. Open your steam library and go to Resonite
+2. Go into Properties and into the Betas tab
+3. Enter the beta code for the Headless client if not done already
+4. Change from "None" to "headless - Builds including headless server" and wait for Steam to update Resonite. 
+    - *Note: make sure to disable compatibility tools for resonite to use the native Linux headless build*
+5. Open Konsole and run the following commands:
+
+    ```shell
+    cd ~/.steam/steam/steamapps/common/Resonite/Headless
+    dotnet ./Resonite.dll
+    ```
+6. The Headless client should startup, you can shut it down whenever, this is just to make sure it's working and to generate any needed files.
+
+- ### Configure the Headless client
+1. Go to the directory in Dolphin or Konsole:
+    `/home/deck/.local/share/Steam/steamapps/common/Resonite/Headless/Config/`
+
+2. duplicate `DefaultConfig.json` and name the new file `Config.json`
+
+3. Modify `Config.json` as needed, primarily account credentials, worlds to run, and permissions.
 
 Congradulations, you can now host Headless sessions on your Steam Deck. As stupid as it sounds, if you don't have another PC you can dedicate to a Headless and don't want to/can't pay for a server, this is a legitimately viable option for self hosting Headless sessions.
+
+For a quick double click to launch the headless, you can save the following to a text file and save the file name with `.sh` at the end (change directory as needed)
+```shell
+#! /bin/bash
+cd ~/.steam/steam/steamapps/common/Resonite/Headless
+dotnet ./Resonite.dll
+```
 
 ## Mods
 
@@ -304,19 +333,20 @@ There are a couple of mod loaders but the primary one is currently [ResoniteModL
 
 There is an in-development mod manager that can actually be used on the Steam Deck right now.
 
-The mod manager, [Resolute](<https://github.com/Gawdl3y/Resolute>), can be downloaded and setup to run without the need to go to Desktop Mode, but for now it requires slight configuration to get working.
+The mod manager, [Resolute](<https://github.com/Gawdl3y/Resolute>), can be downloaded and setup to run in game mode, but for now it requires slight configuration to get working.
 
-**Setting up the mod manager**
+- ### Setting up the mod manager
 
 1. From the [releases page](<https://github.com/Gawdl3y/Resolute/releases>), download the `.AppImage`
 
 2. Open the application
 
-3. enter the install location to Resonite if it's not auto detected correctly (by default: `/home/deck/.local/share/Steam/steamapps/common/Resonite`)
+3. enter the install location to Resonite if it's not auto detected correctly. Default install directory for Resonite:
+`/home/deck/.local/share/Steam/steamapps/common/Resonite`
 
 Resolute is now setup to run and install the mod loader and mods, but more can be done to increase ease of access. It can also update itself when new releases come out.
 
-**Setting up the mod manager in Steam**
+- ### Setting up the mod manager in Steam
 
 1. Move the app to a folder such as `/Home/deck/Applications` or wherever you'd like to store it
 
@@ -332,19 +362,19 @@ It will now work in Game Mode. If you need to manually update it, you'll want to
 
 - [CacheGetClapped](<https://github.com/dfgHiatus/CacheGetClapped>) - Smart cache management, clears old cache files and can keep cache size within specified limit. 
 
-    - *Highly Recommended, especially for 64/256 GB models.*
+    - *Highly Recommended, especially for 64/256 GB models. Can cause database size to bloat overtime.*
 
 - [DynBoneWrangler](<https://github.com/isovel/DynBoneWrangler>) - Disables dynamic bone chains when under a user specified fps limit and re-enables them when above another user specified fps limit.
 
-    - *Prevents shakey dynamic bones at frequently low framerates, may improve frame stability.*
+    - *Prevents shakey dynamic bones at low framerates, can make low framerates more tolerable.*
 
 - [ResoniteIkCulling](<https://github.com/Raidriar796/ResoniteIkCulling>) - Disables IK that's out of view and/or far away. Includes IK throttling options.
 
-    - *Primarily helps thermals and battery life in testing, highly recommended*
+    - *Primarily helps thermals and battery life in testing.*
 
-- [Outflow](<https://github.com/bluecyro/outflow>) - Reduces join lag by preventing streaming threads from being clogged by user joins, only applies to sessions you're hosting
+- [ResoniteModSettings](<https://github.com/badhaloninja/ResoniteModSettings>) - Adds an in game menu for editing mod configs
 
-    - *Highly recommended if you host sessions often, I commend you if you host sessions often on Deck*
+    - *Practically required.*
 
 ## VR
 
