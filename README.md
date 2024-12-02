@@ -81,7 +81,7 @@ This section will give recommended settings for Resonite and for the options in 
 
 **Launch Options (`Properties < General < Launch Options`)**
 
-- `DXVK_FRAME_RATE=60 taskset -c 0-5 nice -10 ionice -n 0 %command% -BackgroundWorkers 6 -PriorityWorkers 5`
+- `DXVK_FRAME_RATE=60 taskset -c 0-5 nice -n -10 ionice -n 0 %command% -BackgroundWorkers 6 -PriorityWorkers 5`
 
   - `DXVK_FRAME_RATE=` is an environment variable which specifies a framerate limit at a lower level than setting it in Steam or Resonite. Here's a couple of recommended values:
     - `60` for smoothness (you will rarely hit 60 under normal usage)
@@ -92,7 +92,7 @@ This section will give recommended settings for Resonite and for the options in 
 
   - `taskset` with `-c 0-5` only allows Resonite to use the first 3 cores of the system, leaving the last core available for the rest of the system. This will reduce Resonite's multithreading performance but will prevent the system from suffocating in heavier sessions, especially on Desktop Mode.
 
-  - `nice` lets you specify how much a process is likely to share resources with the system, ranging from -20 to 19. `-10` will make Resonite more likely to hog resources but perform better. By default, you cannot set a niceness value below -10 in userspace and -10 will do enough as is so there's no need to go out of your way to push it to -20
+  - `nice` lets you specify how much a process is likely to share resources with the system, ranging from -20 to 19. `-n -10` will make Resonite more likely to hog resources but perform better. By default, you cannot set a niceness value below -10 in userspace and -10 will do enough as is so there's no need to go out of your way to push it to -20
 
   - `ionice`, similarly to `nice`, determines the disk I/O priority of an application with 2 metrics, the class and the priority. `-n 0` sets the priority to 0, which is the highest priority. Priority ranges from 0 to 7. This will have a much more significant impact on downloading/loading worlds and objects.
 
