@@ -168,10 +168,7 @@ Relevant setting: `Steam Menu < Settings < Display < Enable Unified Frame Limit 
   - Keep in mind - you may want to at least keep bloom on as it has little improvement when disabling, it additionally has a practical use in content creation and stuff may be designed around it.
 - Ambient Occlusion (AO) Intensity - 0%
 - Screen Space Reflections - Off
-- Antialiasing (AA) - Off 
-  - If you're upscaling:
-    - CTAA with FSR Sharpness 3 for general use
-    - SMAA with FSR Sharpness 1 for content creation/text readibility
+- Antialiasing (AA) - SMAA
 
 *Network < Asset Gathering*
 - Maximum number of concurrent asset transfers - 2
