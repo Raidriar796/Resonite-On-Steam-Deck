@@ -81,7 +81,9 @@ This section will give recommended settings for Resonite and for the options in 
 
 **Launch Options (`Properties < General < Launch Options`)**
 
-- `DXVK_FRAME_RATE=60 taskset -c 0-5 nice -n -10 ionice -n 0 %command% -BackgroundWorkers 6 -PriorityWorkers 5`
+- `LD_PRELOAD="" DXVK_FRAME_RATE=60 taskset -c 0-5 nice -n -10 ionice -n 0 %command% -BackgroundWorkers 6 -PriorityWorkers 5`
+
+  - `LD_PRELOAD=""` is an environment variable used to load separate libraries in place of the libraries the applications would try to run. In this case, this prevents a library from being loaded by Steam which causes a stuttering issue with keyboard/mouse input after prolonged usage.
 
   - `DXVK_FRAME_RATE=` is an environment variable which specifies a framerate limit at a lower level than setting it in Steam or Resonite. Here's a couple of recommended values:
     - `60` for smoothness (you will rarely hit 60 under normal usage)
