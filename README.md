@@ -248,7 +248,7 @@ The wayland driver also causes issues with drag and drop and reading the clipboa
 
 **What about Proton 9.0?**
 
-Proton 9.0 does not include the driver nor can you just download and compile it with the driver as the required files for compiling with the driver are not present in the repository. Some modifications of Proton 9.0 may include the driver but I am not aware of any that do yet.
+Proton 9.0 does not include the driver nor can you just download and compile it with the driver as the required files for compiling with the driver are not present in the repository. Some custom Wine/Proton builds can support the driver, such as [Proton TKG](<https://github.com/Frogging-Family/wine-tkg-git>), but these are not readily accessible on SteamOS.
 
 # Advanced
 
