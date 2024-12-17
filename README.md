@@ -132,8 +132,14 @@ Relevant setting: `Steam Menu < Settings < Display < Enable Unified Frame Limit 
 
 **Recommended Resonite Settings**
 
+*NOTICE: Settings labeled with (Synced) will be cloud synced.*
+
 *User Interface < Quick Photo Capture*
 - Encode Format - WebP
+
+*User Interface < Cursor Settings*
+- Base cursor size (Synced) - 0.05
+  - Change as needed, value was picked based on trying to make it clearly visible without covering too much of the screen
 
 *Profile < Favorites*
 - Load cloud home on startup - Off
@@ -150,11 +156,11 @@ Relevant setting: `Steam Menu < Settings < Display < Enable Unified Frame Limit 
   - Upscaling won't work if this is enabled, but you can use it as an upscaling toggle of sorts
 
 *Graphics < Rendering Quality*
-- Per Pixel Lights - 4
-- Shadow Cascades - None
-- Shadow Resolution - Low
-- Shadow Distance - 64
-- Skin Weights - Two Bones
+- Per Pixel Lights (Synced) - 4
+- Shadow Cascades (Synced) - None
+- Shadow Resolution (Synced) - Low
+- Shadow Distance (Synced) - 64
+- Skin Weights (Synced) - Two Bones
 
 *Graphics < Desktop Render Settings*
 - Field of view - 70
@@ -165,17 +171,17 @@ Relevant setting: `Steam Menu < Settings < Display < Enable Unified Frame Limit 
 - Maximum background framerate - 10
 
 *Graphics < Post Processing*
-- Motion Blur Intensity - 0%
-- Bloom Intensity - 50%
+- Motion Blur Intensity (Synced) - 0%
+- Bloom Intensity (Synced) - 50%
   - Keep in mind - you may want to at least keep bloom on as it has little improvement when disabling, it additionally has a practical use in content creation and stuff may be designed around it.
-- Ambient Occlusion (AO) Intensity - 0%
-- Screen Space Reflections - Off
-- Antialiasing (AA) - SMAA
+- Ambient Occlusion (AO) Intensity (Synced) - 0%
+- Screen Space Reflections (Synced) - Off
+- Antialiasing (AA) (Synced)- SMAA
 
 *Network < Asset Gathering*
-- Maximum number of concurrent asset transfers - 2
+- Maximum number of concurrent asset transfers (Synced) - 2
   - This only effects sessions you're hosting
-- Maximum number of concurrent downloads - 4
+- Maximum number of concurrent downloads (Synced) - 4
 
 *Integrations < Steam Integration*
 - Save Screenshots - Off
