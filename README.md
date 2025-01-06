@@ -106,24 +106,12 @@ This section will give recommended settings for Resonite and for the options in 
 
 **Recommended Quick Access Menu Settings**
 
-*Note: framerate limit and refresh rate settings will vary if you have unified frame limit management enabled*
-
-Relevant setting: `Steam Menu < Settings < Display < Enable Unified Frame Limit Management`
-
-*With unified frame limit management:*
-- Frame limit - n/a
-  - This setting is locked when the frame limit is disabled on the current stable branch of SteamOS
 - Disable Frame Limit - On
 
-*Without unified frame limit management:*
-- Framerate Limit - Off
-- Refresh Rate - 40 hz on LCD/40 hz or 80 hz on OLED
+- TDP Limit - 10W
 
-*Unaffected by unified frame limit management:*
-- Allow Tearing - On
-- Half Rate Shading - Off
-- TDP Limit - 9W
 - Manual GPU Clock - Off
+
 - Upscaling - FSR
   - To be able to upscale, you will need to force the game resolution in Resonite by disabling fullscreen and setting a Window Resolution lower than the display's resolution
   - 1280x720 for docks
