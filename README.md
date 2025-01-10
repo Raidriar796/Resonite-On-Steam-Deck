@@ -81,7 +81,9 @@ This section will give recommended settings for Resonite and for the options in 
 
 **Launch Options (`Properties < General < Launch Options`)**
 
-- `LD_PRELOAD="" DXVK_FRAME_RATE=60 taskset -c 0-5 nice -n -10 ionice -n 0 %command% -BackgroundWorkers 6 -PriorityWorkers 5`
+```
+LD_PRELOAD="" DXVK_FRAME_RATE=60 taskset -c 0-5 nice -n -10 ionice -n 0 %command% -SkipIntroTutorial -DisablePlatformInterfaces -BackgroundWorkers 6 -PriorityWorkers 5
+```
 
   - `LD_PRELOAD=""` is an environment variable used to load separate libraries in place of the libraries the applications would try to run. In this case, this prevents a library from being loaded by Steam which causes a stuttering issue with keyboard/mouse input after prolonged usage.
 
@@ -94,11 +96,17 @@ This section will give recommended settings for Resonite and for the options in 
 
   - `taskset` with `-c 0-5` only allows Resonite to use the first 3 cores of the system, leaving the last core available for the rest of the system. This will reduce Resonite's multithreading performance but will prevent the system from suffocating in heavier sessions, especially on Desktop Mode.
 
+    - keep in mind that CPU thread layouts will differ from CPU to CPU, the Steam Deck does threads 0 and 1 on core 0, but my desktop CPU for example does threads 0 and 8 on core 0. If you disable the wrong set of CPUs, you may hurt performance drastically rather than help it. You can double check your CPU layout with `lstopo`
+
   - `nice` lets you specify how much a process is likely to share resources with the system, ranging from -20 to 19. `-n -10` will make Resonite more likely to hog resources but perform better. By default, you cannot set a niceness value below -10 in userspace and -10 will do enough as is so there's no need to go out of your way to push it to -20
 
   - `ionice`, similarly to `nice`, determines the disk I/O priority of an application with 2 metrics, the class and the priority. `-n 0` sets the priority to 0, which is the highest priority. Priority ranges from 0 to 7. This will have a much more significant impact on downloading/loading worlds and objects.
 
   - `%command%` is what steam uses to figure out where to put launch args, so you can insert environment variables and launch arguments before and after the actual command to run the game.
+
+  - `-SkipIntroTutorial` does what it says on the tin. This makes bootup a lot faster after the first time or after clearing the database.
+
+  - `-DisablePlatformInterfaces` disables Discord and Steam integration (and potentially more integrations in the future), which means less running in the background.
 
   - `-BackgroundWorkers 6` reduces the background workers in Resonite to match the CPU affinity set by `taskset`, Resonite usually automatically allocates background workers based on your CPU thread count.
 
