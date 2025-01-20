@@ -82,7 +82,7 @@ This section will give recommended settings for Resonite and for the options in 
 **Launch Options (`Properties < General < Launch Options`)**
 
 ```
-LD_PRELOAD="" DXVK_FRAME_RATE=60 taskset -c 0-5 nice -n -10 ionice -n 0 %command% -SkipIntroTutorial -DisablePlatformInterfaces -BackgroundWorkers 6 -PriorityWorkers 5
+LD_PRELOAD="" DXVK_FRAME_RATE=60 taskset -c 0-5 nice -n -10 ionice -n 0 %command% -SkipIntroTutorial -BackgroundWorkers 6 -PriorityWorkers 5
 ```
 
   - `LD_PRELOAD=""` is an environment variable used to load separate libraries in place of the libraries the applications would try to run. In this case, this prevents a library from being loaded by Steam which causes a stuttering issue with keyboard/mouse input after prolonged usage.
@@ -105,8 +105,6 @@ LD_PRELOAD="" DXVK_FRAME_RATE=60 taskset -c 0-5 nice -n -10 ionice -n 0 %command
   - `%command%` is what steam uses to figure out where to put launch args, so you can insert environment variables and launch arguments before and after the actual command to run the game.
 
   - `-SkipIntroTutorial` does what it says on the tin. This makes bootup a lot faster after the first time or after clearing the database.
-
-  - `-DisablePlatformInterfaces` disables Discord and Steam integration (and potentially more integrations in the future), which means less running in the background.
 
   - `-BackgroundWorkers 6` reduces the background workers in Resonite to match the CPU affinity set by `taskset`, Resonite usually automatically allocates background workers based on your CPU thread count.
 
