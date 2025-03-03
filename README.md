@@ -6,7 +6,7 @@ This is a community maintained list of stuff you can do to improve using Resonit
 
 **Getting Started**
 - [Controls](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#controls>)
-- [Native or Proton](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#native-or-proton>)
+- [Proton](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#proton>)
 - [Performance & Battery Life](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#performance--battery-life>)
 - [Screenshot management with Proton](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#screenshot-management-with-proton>)
 
@@ -56,22 +56,27 @@ The file will need to be placed in this directory:
 
 `/home/deck/.local/share/Steam/steamapps/common/Steam Controller Configs/[your Steam ID]/config/2519830`
 
-## Native or Proton
+## Proton
 
-**The native build will be deprecated soon, this will update once the change is in effect**
-
-Native is currently not recommended, as it has many issues the Windows build doesn't.
-
-If you still want to use the native build, you can set it in Resonite's properties (`Properties < Compatibility`). From there you can choose Steam-Linux-Runtime or Steam-Play-None
+For the best compatibility, use the latest stable Proton versions, such as Proton 9. [Proton GE](<https://github.com/GloriousEggroll/proton-ge-custom>) provides little benefit for Resonite, especially on Steam Deck, but it provides better video support over official Proton versions so it may be prefered. [Proton GE RTSP](<https://github.com/SpookySkeletons/proton-ge-rtsp>) is a modified version of Proton GE that provides much better support for videos and streams.
 
 All tested & working Proton versions:
-- Proton 8
-- Proton GE 8
-- Proton 9
-- Proton GE 9
-- Proton Experimental
+- Official Proton Versions:
+  - Proton 8
+  - Proton 9
+  - Proton Experimental
+- 3rd Party Proton Versions:
+  - Proton GE 8
+  - Proton GE 9
+  - Proton GE RTSP
 
-To install [Proton GE](<https://github.com/GloriousEggroll/proton-ge-custom>) or [Steam-Play-None](<https://github.com/Scrumplex/Steam-Play-None>), either download [ProtonUp-Qt](<https://github.com/DavidoTek/ProtonUp-Qt>) through discover in desktop mode, or use the [Wine Cellar](<https://github.com/FlashyReese/decky-wine-cellar>) plugin for [decky loader](<https://github.com/SteamDeckHomebrew/decky-loader>).
+Official proton versions are accessible directly in Steam, but 3rd party ones can be installed through any of the following methods:
+
+- [ProtonUp-Qt](<https://github.com/DavidoTek/ProtonUp-Qt>), which can be installed through discover in desktop mode
+- The [Wine Cellar](<https://github.com/FlashyReese/decky-wine-cellar>) plugin for [decky loader](<https://github.com/SteamDeckHomebrew/decky-loader>)
+- Manually place the Proton build into `/home/deck/.steam/steam/compatibilitytools.d/`
+
+Proton GE can be installed through the first 2 methods, Proton GE RTSP must be installed manually.
 
 ## Performance & Battery Life
 
@@ -82,7 +87,7 @@ This section will give recommended settings for Resonite and for the options in 
 **Launch Options (`Properties < General < Launch Options`)**
 
 ```
-LD_PRELOAD="" DXVK_FRAME_RATE=60 taskset -c 0-5 nice -n -10 ionice -n 0 %command% -SkipIntroTutorial -BackgroundWorkers 6 -PriorityWorkers 5
+LD_PRELOAD="" DXVK_FRAME_RATE=60 nice -n -10 ionice -n 0 %command% -SkipIntroTutorial
 ```
 
   - `LD_PRELOAD=""` is an environment variable used to load separate libraries in place of the libraries the applications would try to run. In this case, this prevents a library from being loaded by Steam which causes a stuttering issue with keyboard/mouse input after prolonged usage.
@@ -92,11 +97,7 @@ LD_PRELOAD="" DXVK_FRAME_RATE=60 taskset -c 0-5 nice -n -10 ionice -n 0 %command
 
     - `40` for 40/80 hz refresh rate power saving
 
-    - `30` for general power saving 
-
-  - `taskset` with `-c 0-5` only allows Resonite to use the first 3 cores of the system, leaving the last core available for the rest of the system. This will reduce Resonite's multithreading performance but will prevent the system from suffocating in heavier sessions, especially on Desktop Mode.
-
-    - keep in mind that CPU thread layouts will differ from CPU to CPU, the Steam Deck does threads 0 and 1 on core 0, but my desktop CPU for example does threads 0 and 8 on core 0. If you disable the wrong set of CPUs, you may hurt performance drastically rather than help it. You can double check your CPU layout with `lstopo`
+    - `30` for general power saving
 
   - `nice` lets you specify how much a process is likely to share resources with the system, ranging from -20 to 19. `-n -10` will make Resonite more likely to hog resources but perform better. By default, you cannot set a niceness value below -10 in userspace and -10 will do enough as is so there's no need to go out of your way to push it to -20
 
@@ -105,10 +106,6 @@ LD_PRELOAD="" DXVK_FRAME_RATE=60 taskset -c 0-5 nice -n -10 ionice -n 0 %command
   - `%command%` is what steam uses to figure out where to put launch args, so you can insert environment variables and launch arguments before and after the actual command to run the game.
 
   - `-SkipIntroTutorial` does what it says on the tin. This makes bootup a lot faster after the first time or after clearing the database.
-
-  - `-BackgroundWorkers 6` reduces the background workers in Resonite to match the CPU affinity set by `taskset`, Resonite usually automatically allocates background workers based on your CPU thread count.
-
-  - `-PriorityWorkers 5` reduces the priority workers in Resonite to match the CPU affinity set by `taskset`, Resonite usually automatically allocates priority workers based on your CPU thread count minus 1.
 
 **Recommended Quick Access Menu Settings**
 
