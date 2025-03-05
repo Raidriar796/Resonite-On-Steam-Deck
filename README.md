@@ -170,7 +170,7 @@ LD_PRELOAD="" DXVK_FRAME_RATE=60 nice -n -10 ionice -n 0 %command% -SkipIntroTut
 - Antialiasing (AA) (Synced)- SMAA
 
 *Graphics < Gaussian Splat Rendering Quality*
-- Sorting Mega-operations per camera - 1.00
+- Sorting Mega-operations per camera (Synced) - 1.00
   - Gaussian Splats are incredibly GPU bound and will bring the deck to a crawl, you practically have to set this as low as possible to prevent Resonite from becoming unusable while one is active.
 
 *Network < Asset Gathering*
