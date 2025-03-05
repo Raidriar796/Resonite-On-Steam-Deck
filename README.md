@@ -150,7 +150,7 @@ LD_PRELOAD="" DXVK_FRAME_RATE=60 nice -n -10 ionice -n 0 %command% -SkipIntroTut
 - Per Pixel Lights (Synced) - 4
 - Shadow Cascades (Synced) - None
 - Shadow Resolution (Synced) - Low
-- Shadow Distance (Synced) - 64
+- Shadow Distance (Synced) - 64.00
 - Skin Weights (Synced) - Two Bones
 
 *Graphics < Desktop Render Settings*
@@ -168,6 +168,10 @@ LD_PRELOAD="" DXVK_FRAME_RATE=60 nice -n -10 ionice -n 0 %command% -SkipIntroTut
 - Ambient Occlusion (AO) Intensity (Synced) - 0%
 - Screen Space Reflections (Synced) - Off
 - Antialiasing (AA) (Synced)- SMAA
+
+*Graphics < Gaussian Splat Rendering Quality*
+- Sorting Mega-operations per camera - 1.00
+  - Gaussian Splats are incredibly GPU bound and will bring the deck to a crawl, you practically have to set this as low as possible to prevent Resonite from becoming unusable while one is active.
 
 *Network < Asset Gathering*
 - Maximum number of concurrent asset transfers (Synced) - 2
