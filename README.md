@@ -147,11 +147,11 @@ LD_PRELOAD="" DXVK_FRAME_RATE=60 nice -n -10 ionice -n 0 %command% -SkipIntroTut
   - Upscaling won't work if this is enabled, but you can use it as an upscaling toggle of sorts
 
 *Graphics < Rendering Quality*
-- Per Pixel Lights (Synced) - 4
-- Shadow Cascades (Synced) - None
-- Shadow Resolution (Synced) - Low
-- Shadow Distance (Synced) - 64.00
-- Skin Weights (Synced) - Two Bones
+- Per Pixel Lights - 4
+- Shadow Cascades - None
+- Shadow Resolution - Low
+- Shadow Distance - 64.00
+- Skin Weights - Two Bones
 
 *Graphics < Desktop Render Settings*
 - Field of view - 70
@@ -170,7 +170,10 @@ LD_PRELOAD="" DXVK_FRAME_RATE=60 nice -n -10 ionice -n 0 %command% -SkipIntroTut
 - Antialiasing (AA) (Synced)- SMAA
 
 *Graphics < Gaussian Splat Rendering Quality*
-- Sorting Mega-operations per camera (Synced) - 1.00
+- Quality Preset - Very Low
+- Minimum Locally Compressed Quality - High
+  - This is the lowest amount of compression available. This alleviates the cost of compressing splats locally at the cost of higher VRAM usage.
+- Sorting Mega-operations per camera - 1.00
   - Gaussian Splats are incredibly GPU bound and will bring the deck to a crawl, you practically have to set this as low as possible to prevent Resonite from becoming unusable while one is active.
 
 *Network < Asset Gathering*
