@@ -2,6 +2,18 @@
  
 This is a community maintained list of stuff you can do to improve using Resonite on the Steam Deck. This list will change over time as needed, feel free to give suggestions or corrections by opening an issue.
 
+# NOTICE
+
+This guide hasn't been updated in a while and is in need of an overhaul. That being said, a lot of this guide will soon become very outdated due to upcoming performance improvements to Resonite.
+
+For more info on the current progress of said performance improvements, here are some relevant links:
+- [Performance Optimizations](<https://github.com/orgs/Yellow-Dog-Man/projects/29/views/1>)
+- [Rework engine to a process based architecture](<https://github.com/Yellow-Dog-Man/Resonite-Issues/issues/706>)
+- [THE TESTENING - The Splittening - .NET 9 graphical client build](<https://github.com/Yellow-Dog-Man/Resonite-Issues/discussions/4774>)
+
+**TLDR;**
+The underlying engine of Resonite, Frooxengine, is currently being reworked to run outside of Unity. This opens the floodgates for performance and feature improvements as well as the eventual replacement of Unity entirely.
+
 ## Table of Contents
 
 **Getting Started**
