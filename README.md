@@ -177,7 +177,7 @@ LD_PRELOAD="" DXVK_FRAME_RATE=60 DXVK_CONFIG="dxgi.maxDeviceMemory = 512;" %comm
 
 *Integrations < Steam Integration*
 - Save Screenshots - Off
-  - This prevents saving photos twice, more info later in the guide
+  - This prevents saving photos twice
 
 *Misc < OS Settings*
 - Keep original screenshot format - On
