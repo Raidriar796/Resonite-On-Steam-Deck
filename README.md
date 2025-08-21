@@ -130,7 +130,8 @@ LD_PRELOAD="" DXVK_FRAME_RATE=60 DXVK_CONFIG="dxgi.maxDeviceMemory = 512;" %comm
 - Load cloud home on startup - Off
 
 *Graphics < Texture Quality*
-- Relative Texture Size - Quarter Size
+- Relative Texture Size - Full Size
+  - Quarter Size recommended when [#5314](<https://github.com/Yellow-Dog-Man/Resonite-Issues/issues/5314>) is fixed
 - Maximum Texture Size - Tex 1K
 - Limit Texture Above Resolution - 512
 - Texture Filtering - Anisotropic
