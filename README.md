@@ -14,6 +14,7 @@ This is a community maintained list of stuff you can do to improve using Resonit
 **Advanced**
 - [Headless Sessions](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#headless-client>)
 - [Mods](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#mods>)
+- [Satori](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#satori>)
 - [VR](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#vr>)
 
 # Getting Started
@@ -199,6 +200,19 @@ Coming soon :)
 ## Mods
 
 Also coming soon :)
+
+## Satori
+
+Satori is a pauseless garbage collector for dotnet, which can result in improved responsiveness in Resonite. This is nice to use in general, but it's much more impactful on lower power devices like the Steam Deck.
+
+To avoid the need for compilation (especially on a Steam Deck), I have provided precompiled files in this guide which you can extract into your Resonite install to use Satori.
+
+To install Satori:
+1. Run Resonite at least once
+2. Download [Satori.zip](<https://github.com/Raidriar796/Resonite-On-Steam-Deck/raw/refs/heads/main/Satori/Satori.zip>)
+3. In your Resonite install, extract the zip into `dotnet-runtime/shared/Microsoft.NETCore.App/9.0.8/` and replace/overwrite files with the same name
+
+That's it. If you'd like to remove Satori, delete the `dotnet-runtime` folder and run Resonite again (or put back the original files if you kept them).
 
 ## VR
 
