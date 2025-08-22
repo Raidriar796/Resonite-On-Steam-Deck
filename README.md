@@ -13,6 +13,7 @@ This is a community maintained list of stuff you can do to improve using Resonit
 
 **Advanced**
 - [Headless Sessions](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#headless-client>)
+- [lsfg-vk](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#lsfg-vk>)
 - [Mods](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#mods>)
 - [Satori](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#satori>)
 - [VR](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#vr>)
@@ -197,6 +198,28 @@ LD_PRELOAD="" DXVK_FRAME_RATE=60 DXVK_CONFIG="dxgi.maxDeviceMemory = 512;" %comm
 ## Headless Client
 
 Coming soon :)
+
+## lsfg-vk
+
+[lsfg-vk](<https://github.com/pancaketas/lsfg-vk>) is a project to bring the frame generation from [Lossless Scaling](<https://store.steampowered.com/app/993090/Lossless_Scaling/>) to Linux, which includes SteamOS.
+This can allow you to reduce CPU usage by cutting the framerate in half and making the GPU fill in the gaps. In general this should reduce overall load and improve battery life with visual artifacts and smearing as the tradeoff.
+
+The [lsfg-vk installation guide](<https://github.com/PancakeTAS/lsfg-vk/wiki/Installation-Guide>) goes over installing for SteamOS, so follow that guide and do the following:
+1. Open the lsfg-vk configuration ui and create a new profile with the following:
+  - Profile name - Resonite
+  - Multiplier - 2
+  - Flow Scale - 100
+  - Performance Mode - On
+2. Set following to your Resonite launch arguments:
+```
+LSFG_PROCESS=Resonite DXVK_FRAME_RATE=30 %command%
+```
+  - Set `DXVK_FRAME_RATE` to half of your target framerate, ie 30 for 60 hz, 45 for 90 hz, etc
+3. Optionally, if the input latency increase is too much, try setting this:
+  - Present Mode - Immediate
+    - This will improve input latency at the cost of potentially reduced smoothness
+
+lsfg-vk should now work in Resonite. If you'd like to disable it, you can remove `LSFG_PROCESS` from the launch arguments or remove the profile from your config.
 
 ## Mods
 
