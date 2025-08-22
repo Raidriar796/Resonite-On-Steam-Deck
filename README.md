@@ -214,10 +214,15 @@ The [lsfg-vk installation guide](<https://github.com/PancakeTAS/lsfg-vk/wiki/Ins
 ```
 LSFG_PROCESS=Resonite DXVK_FRAME_RATE=30 %command%
 ```
-  - Set `DXVK_FRAME_RATE` to half of your target framerate, ie 30 for 60 hz, 45 for 90 hz, etc
+  - Set `DXVK_FRAME_RATE` to half of your target framerate, such as 30 for 60 hz, 45 for 90 hz, etc
 3. Optionally, if the input latency increase is too much, try setting this:
   - Present Mode - Immediate
     - This will improve input latency at the cost of potentially reduced smoothness
+
+If you added the recommended launch arguments earlier in this guide, your arguments should look something like this:
+```
+LD_PRELOAD="" LSFG_PROCESS=Resonite DXVK_FRAME_RATE=30 DXVK_CONFIG="dxgi.maxDeviceMemory = 512;" %command% -SkipIntroTutorial
+```
 
 lsfg-vk should now work in Resonite. If you'd like to disable it, you can remove `LSFG_PROCESS` from the launch arguments or remove the profile from your config.
 
