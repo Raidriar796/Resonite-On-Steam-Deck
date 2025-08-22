@@ -204,13 +204,13 @@ Coming soon :)
 [lsfg-vk](<https://github.com/pancaketas/lsfg-vk>) is a project to bring the frame generation from [Lossless Scaling](<https://store.steampowered.com/app/993090/Lossless_Scaling/>) to Linux, which includes SteamOS.
 This can allow you to reduce CPU usage by cutting the framerate in half and making the GPU fill in the gaps. In general this should reduce overall load and improve battery life with visual artifacts and smearing as the tradeoff.
 
-The [lsfg-vk installation guide](<https://github.com/PancakeTAS/lsfg-vk/wiki/Installation-Guide>) goes over installing for SteamOS, so follow that guide and do the following:
+The [lsfg-vk installation guide](<https://github.com/PancakeTAS/lsfg-vk/wiki/Installation-Guide>) goes over installing for SteamOS, so follow that guide and then do the following:
 1. Open the lsfg-vk configuration ui and create a new profile with the following:
   - Profile name - Resonite
   - Multiplier - 2
   - Flow Scale - 100
   - Performance Mode - On
-2. Set following to your Resonite launch arguments:
+2. Set the following to your Resonite launch arguments:
 ```
 LSFG_PROCESS=Resonite DXVK_FRAME_RATE=30 %command%
 ```
