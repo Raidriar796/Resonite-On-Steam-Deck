@@ -253,7 +253,7 @@ lsfg-vk should now work in Resonite. If you'd like to disable it, you can remove
 
 ## Mods
 
-Also coming soon :)
+Coming soon :)
 
 ## Satori
 
