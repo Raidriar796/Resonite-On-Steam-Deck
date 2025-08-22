@@ -12,7 +12,7 @@ This is a community maintained list of stuff you can do to improve using Resonit
 - [Performance & Battery Life](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#performance--battery-life>)
 
 **Advanced**
-- [Headless Sessions](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#headless-client>)
+- [Headless Client](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#headless-client>)
 - [lsfg-vk](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#lsfg-vk>)
 - [Mods](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#mods>)
 - [Satori](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#satori>)
@@ -136,7 +136,7 @@ LD_PRELOAD="" DXVK_FRAME_RATE=60 DXVK_CONFIG="dxgi.maxDeviceMemory = 512;" %comm
 - Maximum Texture Size - Tex 1K
 - Limit Texture Above Resolution - 512
 - Texture Filtering - Anisotropic
-- Anisotropic Level - 4
+- Anisotropic Level - 16
 
 *Graphics < Resolution*
 - Fullscreen - Off
@@ -162,7 +162,7 @@ LD_PRELOAD="" DXVK_FRAME_RATE=60 DXVK_CONFIG="dxgi.maxDeviceMemory = 512;" %comm
   - Keep in mind - you may want to at least keep bloom on as it has little improvement when disabling, it additionally has a practical use in content creation and stuff may be designed around it.
 - Ambient Occlusion (AO) Intensity (Synced) - 0%
 - Screen Space Reflections (Synced) - Off
-- Antialiasing (AA) (Synced)- SMAA
+- Antialiasing (AA) (Synced) - SMAA
 
 *Graphics < Gaussian Splat Rendering Quality*
 - Quality Preset - Very Low
@@ -197,7 +197,32 @@ LD_PRELOAD="" DXVK_FRAME_RATE=60 DXVK_CONFIG="dxgi.maxDeviceMemory = 512;" %comm
 
 ## Headless Client
 
-Coming soon :)
+With the release of the big performance update, running the headless client is now incredibly easy. Since the dotnet runtime is provided for you simply by running Resonite, you can use it to also run the headless client without installing anything extra.
+
+To run the headless client on the Steam Deck, do the following:
+1. Change the branch in Steam to the `headless` branch
+  - Requires the appropriate Patreon/Stripe tier to access it
+  - Send `/headlessCode` to the Resonite bot in Resonite to get the code for the Steam Branch
+2. Run Resonite at least once
+3. Open a terminal and `cd` into the headless install directory, with a default install you'd run:
+```
+cd ~/.steam/steam/steamapps/common/Resonite/Headless/
+```
+4. Run the headless client with the provided dotnet install like so:
+```
+../dotnet-runtime/dotnet Resonite.dll
+```
+
+If it launches without errors, you're good to shut it down and configure the client like any other headless setup. Read the [headless configuration](<https://wiki.resonite.com/Headless_Server_Software/Configuration_File>) page on the Resonite Wiki if you haven't already.
+
+Now you can run the headless client on a Steam Deck. Here's a template for a script you could create to run the headless easier:
+
+```
+#!/bin/bash
+
+cd ~/.steam/steam/steamapps/common/Resonite/Headless
+../dotnet-runtime/dotnet Resonite.dll
+```
 
 ## lsfg-vk
 
