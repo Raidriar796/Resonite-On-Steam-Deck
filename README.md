@@ -52,8 +52,9 @@ In the event you cannot download the layout through Steam directly, you can down
 [**Raidriar's Layout**](<https://raw.githubusercontent.com/Raidriar796/Resonite-On-Steam-Deck/main/controller_neptune.vdf>)
 
 The file will need to be placed in this directory:
-
-`/home/deck/.local/share/Steam/steamapps/common/Steam Controller Configs/[your Steam ID]/config/2519830`
+```
+/home/deck/.local/share/Steam/steamapps/common/Steam Controller Configs/[your Steam ID]/config/2519830
+```
 
 ## Proton
 
@@ -76,7 +77,7 @@ Official proton versions are accessible directly in Steam, but 3rd party ones ca
 
 - [ProtonUp-Qt](<https://github.com/DavidoTek/ProtonUp-Qt>), which can be installed through discover in desktop mode
 - The [Wine Cellar](<https://github.com/FlashyReese/decky-wine-cellar>) plugin for [decky loader](<https://github.com/SteamDeckHomebrew/decky-loader>)
-- Manually place the Proton build into `/home/deck/.steam/steam/compatibilitytools.d/`
+- Manually place Proton versions into `/home/deck/.steam/steam/compatibilitytools.d/`
 
 # Further Improvements
 
@@ -91,16 +92,15 @@ This section will give recommended settings for Resonite and for the options in 
 ```
 LD_PRELOAD="" DXVK_FRAME_RATE=60 DXVK_CONFIG="dxgi.maxDeviceMemory = 512;" %command% -SkipIntroTutorial
 ```
-
-  - `LD_PRELOAD=""` is an environment variable used to load separate libraries in place of the libraries the applications would try to run. In this case, this prevents a library from being loaded by Steam which causes a stuttering issue with keyboard/mouse input after prolonged usage. This is mostly beneficial for use in Desktop Mode
-  - `DXVK_FRAME_RATE=` is an environment variable which specifies a framerate limit at a lower level than setting it in Steam or Resonite. Here's a couple of recommended values:
-    - `60` for smoothness (you will rarely hit 60 under normal usage)
-    - `40` for 40/80 hz refresh rate power saving
-    - `30` for general power saving
-  - `DXVK_CONFIG="dxgi.maxDeviceMemory = 512;"` does a config override for DXVK that tells dx11 that it has 512 MB of VRAM, this will not prevent Resonite from using more than 512 MB, but it can help keep VRAM usage lower.
-    - If you're using Cryo Utilities (shown below), you can try 2048 instead. Feel free to experiment with different values.
-  - `%command%` is what steam uses to figure out where to put launch args, so you can insert environment variables and launch arguments before and after the actual command to run the game.
-  - `-SkipIntroTutorial` does what it says on the tin. This makes bootup a lot faster after the first time or after clearing the database.
+- `LD_PRELOAD=""` is an environment variable used to load separate libraries in place of the libraries the applications would try to run. In this case, this prevents a library from being loaded by Steam which causes a stuttering issue with keyboard/mouse input after prolonged usage. This is mostly beneficial for use in Desktop Mode
+- `DXVK_FRAME_RATE=` is an environment variable which specifies a framerate limit at a lower level than setting it in Steam or Resonite. Here's a couple of recommended values:
+  - `60` for smoothness (you will rarely hit 60 under normal usage)
+  - `40` for 40/80 hz refresh rate power saving
+  - `30` for general power saving
+- `DXVK_CONFIG="dxgi.maxDeviceMemory = 512;"` does a config override for DXVK that tells dx11 that it has 512 MB of VRAM, this will not prevent Resonite from using more than 512 MB, but it can help keep VRAM usage lower.
+  - If you're using Cryo Utilities (shown below), you can try 2048 instead. Feel free to experiment with different values.
+- `%command%` is what steam uses to figure out where to put launch args, so you can insert environment variables and launch arguments before and after the actual command to run the game.
+- `-SkipIntroTutorial` does what it says on the tin. This makes bootup a lot faster after the first time or after clearing the database.
 
 **Quick Access Menu**
 
@@ -112,9 +112,6 @@ LD_PRELOAD="" DXVK_FRAME_RATE=60 DXVK_CONFIG="dxgi.maxDeviceMemory = 512;" %comm
 
 - Scaling Filter - Sharp
   - To be able to upscale, you will need to force the game resolution in Resonite by disabling fullscreen and setting a Window Resolution lower than the display's resolution
-  - 1280x720 for docks
-  - 1024x640 for text readibility
-  - 960x600 for battery life
 
 **Resonite Settings**
 
@@ -138,24 +135,6 @@ LD_PRELOAD="" DXVK_FRAME_RATE=60 DXVK_CONFIG="dxgi.maxDeviceMemory = 512;" %comm
 - Texture Filtering - Anisotropic
 - Anisotropic Level - 16
 
-*Graphics < Resolution*
-- Fullscreen - Off
-  - Upscaling won't work if this is enabled, but you can use it as an upscaling toggle of sorts
-
-*Graphics < Rendering Quality*
-- Per Pixel Lights - 4
-- Shadow Cascades - None
-- Shadow Resolution - Low
-- Shadow Distance - 64.00
-- Skin Weights - Two Bones
-
-*Graphics < Desktop Render Settings*
-- Field of view - 70
-- VSync - Off
-- Limit framerate when in background - On
-  - Only relevant when using Desktop Mode
-- Maximum background framerate - 10
-
 *Graphics < Post Processing*
 - Motion Blur Intensity (Synced) - 0%
 - Bloom Intensity (Synced) - 50%
@@ -164,17 +143,35 @@ LD_PRELOAD="" DXVK_FRAME_RATE=60 DXVK_CONFIG="dxgi.maxDeviceMemory = 512;" %comm
 - Screen Space Reflections (Synced) - Off
 - Antialiasing (AA) (Synced) - SMAA
 
+*Graphics < Rendering Quality*
+- Per Pixel Lights - 4
+- Shadow Cascades - None
+- Shadow Resolution - Low
+- Shadow Distance - 64.00
+- Skin Weights - Two Bones
+
+*Graphics < Resolution*
+- Fullscreen - Off
+  - Upscaling won't work if this is enabled, but you can use it as an upscaling toggle of sorts
+- Window Resolution - x 1024 y 640
+  - 1280x720 for docks
+  - 1024x640 for text readibility
+  - 960x600 for battery life
+- Fullscreen Resolution - x 1280 y 800
+
+*Graphics < Desktop Render Settings*
+- Field of view - 70
+- VSync - Off
+- Limit framerate when in background - On
+  - Only relevant when using Desktop Mode
+- Maximum background framerate - 10
+
 *Graphics < Gaussian Splat Rendering Quality*
 - Quality Preset - Very Low
 - Minimum Locally Compressed Quality - High
   - This is the lowest amount of compression available. This alleviates the cost of compressing splats locally at the cost of higher VRAM usage.
 - Sorting Mega-operations per camera - 1.00
   - Gaussian Splats are incredibly GPU bound and will bring the deck to a crawl, you practically have to set this as low as possible to prevent Resonite from becoming unusable while one is active.
-
-*Network < Asset Gathering*
-- Maximum number of concurrent asset transfers (Synced) - 4
-  - This only effects sessions you're hosting
-- Maximum number of concurrent downloads (Synced) - 64
 
 *Integrations < Steam Integration*
 - Save Screenshots - Off
@@ -202,7 +199,7 @@ With the release of the big performance update, running the headless client is n
 
 To run the headless client on the Steam Deck, do the following:
 1. Change the branch in Steam to the `headless` branch
-  - Requires the appropriate Patreon/Stripe tier to access it
+  - Requires the appropriate [Patreon](<https://www.patreon.com/resonite>)/[Subscription](<https://account.resonite.com/Identity/Account/Manage/Subscription>) tier to access it
   - Send `/headlessCode` to the Resonite bot in Resonite to get the code for the Steam Branch
 2. Run Resonite at least once
 3. Open a terminal and `cd` into the headless install directory, with a default install you'd run:
@@ -214,7 +211,7 @@ cd ~/.steam/steam/steamapps/common/Resonite/Headless/
 ../dotnet-runtime/dotnet Resonite.dll
 ```
 
-If it launches without errors, you're good to shut it down and configure the client like any other headless setup. Read the [headless configuration](<https://wiki.resonite.com/Headless_Server_Software/Configuration_File>) page on the Resonite Wiki if you haven't already.
+If it launches without errors, you can safely shut it down with the `shutdown` command and configure the client like any other headless setup. Read the [headless configuration](<https://wiki.resonite.com/Headless_Server_Software/Configuration_File>) page on the Resonite Wiki if you haven't already.
 
 Now you can run the headless client on a Steam Deck. Here's a template for a script you could create to run the headless easier:
 
@@ -241,9 +238,9 @@ The [lsfg-vk installation guide](<https://github.com/PancakeTAS/lsfg-vk/wiki/Ins
 LSFG_PROCESS=Resonite DXVK_FRAME_RATE=30 %command%
 ```
   - Set `DXVK_FRAME_RATE` to half of your target framerate, such as 30 for 60 hz, 45 for 90 hz, etc
-3. Optionally, if the input latency increase is too much, try setting this:
+3. Optionally, if the input latency increase is too much, try changing this setting:
   - Present Mode - Immediate
-    - This will improve input latency at the cost of potentially reduced smoothness
+    - This will improve input latency at the cost of reduced smoothness
 
 If you added the recommended launch arguments earlier in this guide, your arguments should look something like this:
 ```
