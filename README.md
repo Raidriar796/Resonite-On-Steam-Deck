@@ -188,6 +188,7 @@ LD_PRELOAD="" DXVK_FRAME_RATE=60 DXVK_CONFIG="dxgi.maxDeviceMemory = 512;" %comm
 
 - [Cryo Utilities](<https://github.com/CryoByte33/steam-deck-utilities>)
   - RAM, VRAM, Swap, and storage optimizations.
+  - For now, [avoid resizing the swap](<https://github.com/CryoByte33/steam-deck-utilities/issues/179#issuecomment-2105414911>) with Cryo Utils, SteamOS 3.6 enables [Zram](<https://wiki.archlinux.org/title/Zram>) which breaks some functions within Cryo Utils.
 
 - [Powertools](<https://git.ngni.us/NG-SD-Plugins/PowerTools>)
   - [decky loader](<https://github.com/SteamDeckHomebrew/decky-loader>) plugin that exposes more options to tweak performance.
