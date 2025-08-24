@@ -66,12 +66,9 @@ All tested & working Proton versions:
   - Proton 10
   - Proton Experimental
 - 3rd Party Proton Versions:
+  - Proton CachyOS
   - Proton GE 9
   - Proton GE 10
-
-Currently known broken Proton versions:
-- 3rd Party Proton Versions:
-  - Proton Cachyos
 
 Official proton versions are accessible directly in Steam, but 3rd party ones can be installed through any of the following methods:
 
