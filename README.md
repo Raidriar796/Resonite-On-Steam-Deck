@@ -236,8 +236,8 @@ LSFG_PROCESS=Resonite DXVK_FRAME_RATE=30 %command%
 ```
   - Set `DXVK_FRAME_RATE` to half of your target framerate, such as 30 for 60 hz, 45 for 90 hz, etc
 3. Optionally, if the input latency increase is too much, try changing this setting:
-  - Present Mode - Immediate
-    - This will improve input latency at the cost of reduced smoothness
+  - Present Mode - Mailbox
+    - This will improve input latency at the cost of potentially reduced smoothness
 
 If you added the recommended launch arguments earlier in this guide, your arguments should look something like this:
 ```
@@ -248,7 +248,77 @@ lsfg-vk should now work in Resonite. If you'd like to disable it, you can remove
 
 ## Mods
 
-Coming soon :)
+Mods in Resonite offer a lot of fixes, tweaks, and quality of life additions, but are by no means required.
+
+### Installation via GUI
+
+The mod manager [Resolute](<https://github.com/Gawdl3y/Resolute>) can download and install [Resonite Mod Loader (RML)](<https://github.com/resonite-modding-group/ResoniteModLoader>) as well as mods for RML, and is the simplest way to use mods on a Steam Deck.
+
+**Setting up Resolute**
+
+1. Switch to Desktop Mode
+
+2. From the [releases page](<https://github.com/Gawdl3y/Resolute/releases>), download the `.AppImage`
+
+3. Open Resolute
+
+4. Proceed with the initial setup and enter the install location to Resonite if it's not auto detected correctly. Default install directory for Resonite:
+```
+/home/deck/.local/share/Steam/steamapps/common/Resonite
+```
+
+Resolute is now setup to run and install RML and mods for RML, but more can be done to increase ease of access. It can also update itself when new releases come out.
+
+**Using Resolute in Game Mode**
+
+1. Move the app to a folder such as `/home/deck/Applications` or wherever you'd like to store it
+
+2. Rename it, I'd suggest just naming it "resolute.AppImage"
+
+3. Right click (left trigger) the file and click `Add to Steam`
+
+Resolute will now be available in Game Mode.
+
+If you need to manually update it, you'll want to revisit the releases page and download the latest AppImage, replace the previous AppImage with the new file, and rename it to "resolute.AppImage" (or whatever it was named before) so nothing needs to be reconfigured in Steam.
+
+### Manual Installation
+
+Resonite Mod Loader's and Monkey Loader's installation guides can be followed normally on the Steam Deck
+
+[Resonite Mod Loader Installation](<https://github.com/resonite-modding-group/ResoniteModLoader?tab=readme-ov-file#installation>)
+
+[Monkey Loader Installation](<https://github.com/ResoniteModdingGroup/MonkeyLoader.GamePacks.Resonite?tab=readme-ov-file#installation>)
+
+### Recommended Mods
+
+**Unless stated otherwise, mods listed here are available in Resolute**
+
+- [CherryPick](<https://cyro.blue/cyro/CherryPick>) (Out of date in Resolute, download manually) - Simple component and protoflux searching
+  - Helps remove the need to navigate the component/protoflux browser with the Deck's controls.
+
+- [DuplicateFix](<https://github.com/art0007i/DuplicateFix>) - Makes it so duplicated items maintain references between each other.
+  - General nice to have but this issue is a lot more frustrating to deal with on the Deck's controls.
+
+- [EmpoweredImageEncoding](<https://git.unix.dog/yosh/ResoniteEmpoweredImageEncoding>) - Configure Resonite image encoding & quick photo quality parameters
+  - Can help reduce the resource usage for taking Quick Photos at the cost of increased network usage for uploading photos.
+
+- [FasterFirstCasts](<https://git.unix.dog/yosh/ResoniteFasterFirstCasts>) - Faster first node overload casting by only searching a node list
+  - Speeds up initial casts to make protoflux a bit smoother to work with on Deck.
+
+- [HostCrashGuard](<https://github.com/AwesomeTornado/Resonite-HostCrashGuard>) - Makes Resonite Crash Less! Fixes #2746 (Decimal DIV/0), #2681 (Host timeout), #1646 (Invalid components)
+  - I believe this explains itself.
+
+- [InspectorScroll](<https://github.com/art0007i/InspectorScroll>) - Allows scrolling inspectors (and other ui panels) using your thumbstick / touchpad.
+  - Can improve UI navigation, and allow controls like scrolling incrementally with the D-Pad when using my controller layout.
+
+- [ResoniteIkCulling](<https://github.com/Raidriar796/ResoniteIkCulling>) - Disables the IK of Users who are behind you or far away. Includes IK throttling.
+  - Can improve performance in populated sessions under certain situations.
+
+- [ResoniteModSettings](<https://github.com/badhaloninja/ResoniteModSettings>) - Adds a dash screen to edit mod configs
+  - Adds an in game menu for configuring mods, only needed if you're only using RML.
+
+- [VisemesAtHome](<https://github.com/KyuubiYoru/VisemesAtHome>) (Not available in Resolute) - Enables mic-driven visemes on Linux (.NET 9). Provides a workaround since OVRLipSync has no Linux build.
+  - Allows you to process visemes for yourself and other Linux users locally. This also lets other Linux users see your Visemes.
 
 ## Satori
 
@@ -265,4 +335,4 @@ That's it. If you'd like to remove Satori, delete the `dotnet-runtime` folder an
 
 ## VR
 
-Yes, even this is coming soon :)
+Yes, this is coming soon :)
