@@ -5,6 +5,7 @@ This is a community maintained list of stuff you can do to improve using Resonit
 ## Table of Contents
 
 **Getting Started**
+- [Known Issues](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#known-issues>)
 - [Controls](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#controls>)
 - [Proton](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#proton>)
 
@@ -19,6 +20,10 @@ This is a community maintained list of stuff you can do to improve using Resonit
 - [VR](<https://github.com/Raidriar796/Resonite-On-Steam-Deck#vr>)
 
 # Getting Started
+
+## Known Issues
+
+[#5473](<https://github.com/Yellow-Dog-Man/Resonite-Issues/issues/5473>) - Resonite does not launch correctly when installed to an SD card.
 
 ## Controls
 
