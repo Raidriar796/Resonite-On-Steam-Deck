@@ -298,7 +298,7 @@ Resonite Mod Loader's and Monkey Loader's installation guides can be followed no
 
 **Unless stated otherwise, mods listed here are available in Resolute**
 
-- [CherryPick](<https://cyro.blue/cyro/CherryPick>) (Out of date in Resolute, download manually) - Simple component and protoflux searching
+- [CherryPick](<https://cyro.blue/cyro/CherryPick>) - Simple component and protoflux searching
   - Helps remove the need to navigate the component/protoflux browser with the Deck's controls.
 
 - [DuplicateFix](<https://github.com/art0007i/DuplicateFix>) - Makes it so duplicated items maintain references between each other.
