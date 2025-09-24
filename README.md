@@ -322,9 +322,6 @@ Resonite Mod Loader's and Monkey Loader's installation guides can be followed no
 - [ResoniteModSettings](<https://github.com/badhaloninja/ResoniteModSettings>) - Adds a dash screen to edit mod configs
   - Adds an in game menu for configuring mods, only needed if you're only using RML.
 
-- [VisemesAtHome](<https://github.com/KyuubiYoru/VisemesAtHome>) (Not available in Resolute) - Enables mic-driven visemes on Linux (.NET 9). Provides a workaround since OVRLipSync has no Linux build.
-  - Allows you to process visemes for yourself and other Linux users locally. This also lets other Linux users see your Visemes.
-
 ## Satori
 
 Satori is a pauseless garbage collector for dotnet, which can result in improved responsiveness in Resonite. This is nice to use in general, but it's much more impactful on lower power devices like the Steam Deck.
