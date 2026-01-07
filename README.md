@@ -297,7 +297,7 @@ Resonite Mod Loader's and Monkey Loader's installation guides can be followed no
 
 ### Recommended Mods
 
-**Unless stated otherwise, mods listed here are available in Resolute**
+**Unless stated otherwise, mods listed here are available through Resolute**
 
 - [CherryPick](<https://cyro.blue/cyro/CherryPick>) - Simple component and protoflux searching
   - Helps remove the need to navigate the component/protoflux browser with the Deck's controls.
@@ -316,6 +316,11 @@ Resonite Mod Loader's and Monkey Loader's installation guides can be followed no
 
 - [FastSync](<https://github.com/Raidriar796/FastSync>) - Improves compression speed for sync messages.
   - This reduces a significant amount of overhead for session traffic on the Deck, for the cost of a 1-5% increase in outbound network traffic.
+
+- [LinuxAudioBufferThing](<https://git.unix.dog/yosh/some-resonite-mods/src/branch/main/LinuxAudioBufferThing>) - Minimizes resource usage in the audio thread.
+  - This significantly reduces power consumption and temperatures, especially under low power/idle workloads.
+  - This mod is not available through Resolute
+  - This mod does not provide release binaries, so I have provided a build [here](<https://github.com/Raidriar796/Resonite-On-Steam-Deck/raw/refs/heads/main/Mods/LinuxAudioBufferThing.dll>)
 
 - [LiteStreams](<https://github.com/Raidriar796/LiteStreams>) - Reduces outbound network traffic.
   - Similar in use case to DynamicDesyncHelper, but this specifically reduces outbound traffic for cases where the upload speed of a network is bad.
